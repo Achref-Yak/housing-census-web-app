@@ -1,0 +1,85 @@
+Entities\Etat:
+  type: entity
+  table: Etat
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    Entree :
+      type: integer
+      nullable: true
+    FacadeTerrase :
+      type: string
+      nullable: true
+    PartieCom :
+      type: string
+      nullable: true
+    PartieMure:
+      type: string
+      nullable: true
+    PartieBalcon:
+      type: string
+      nullable: true
+    Terras:
+      type: string
+      nullable: true
+    Platon:
+      type: string
+      nullable: true
+    Evacuation:
+      type: string
+      nullable: true
+    Electrique:
+      type: string
+      nullable: true
+    Gaz:
+      type: string
+      nullable: true
+    Eau:
+      type: string
+      nullable: true
+    EtageB:
+      type: integer
+      nullable: true
+    EtageM:
+      type: integer
+      nullable: true
+    EtageR:
+      type: integer
+      nullable: true
+    EtageMC:
+      type: integer
+      nullable: true
+    NbrBienB:
+      type: integer
+      nullable: true
+    NbrBienM:
+      type: integer
+      nullable: true
+    NbrBienR:
+      type: integer
+      nullable: true
+    NbrBienMC:
+      type: integer
+      nullable: true
+    EtageRepa:
+      type: integer
+      nullable: true 
+    NbrBienRepa:
+      type: integer
+      nullable: true        
+  oneToOne:
+    Immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+            name: Immeuble_id
+            referencedColumnName: id
+            onDelete: CASCADE
+    
+
+
+
+
+ 

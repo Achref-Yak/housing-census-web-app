@@ -1,0 +1,32 @@
+Entities\Immeuble:
+  type: entity
+  table: Immeuble
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    Update_by:
+      type: integer
+      nullable: true
+    Update_date:
+      type: datetime
+      nullable: true
+    Created_by:
+      type: integer
+      nullable: true
+    Created_date:
+      type: datetime
+      nullable: true  
+  
+
+
+
+
+
+
+
+  
+   
+   

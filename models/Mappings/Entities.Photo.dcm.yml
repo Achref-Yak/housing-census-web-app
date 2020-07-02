@@ -1,0 +1,22 @@
+Entities\Photo:
+  type: entity
+  table: Photo
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    Title :
+      type : string 
+      nullable : true
+    URL :
+      type: string
+      nullable: true
+    Code_TF :
+      type : string 
+      nullable : true
+    Code_Local :
+      type : string 
+      nullable : true
+ 

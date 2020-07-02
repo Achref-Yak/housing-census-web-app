@@ -1,0 +1,82 @@
+Entities\Gestion:
+  type: entity
+  table: Gestion
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    NTF :
+      type : string 
+      nullable : true
+    CodeImmeuble :
+      type: string
+      nullable: true
+    CodeImmeuble :
+      type: string
+      nullable : true
+    TypeTF :
+      type : string
+      nullable : true
+    NatureImmeuble :
+      type : string
+      nullable : true
+    NatureTF :
+      type : string
+      nullable : true
+    DateConstruction :
+      type : date
+      nullable : true
+    NombreEtages :
+      type : integer
+      nullable : true  
+    NombreLocaux :
+      type : integer
+      nullable : true  
+    Adresse :
+      type : string
+      nullable : true
+    AdresseAr :
+      type : string
+      nullable : true     
+    Localite :
+      type : string
+      nullable : true    
+    Gouvernorat :
+      type : string
+      nullable : true 
+    Zone :
+      type : string
+      nullable : true   
+    CodePostal :
+      type : string
+      nullable : true   
+    EtapeGestionTitre :
+      type : string
+      nullable : true   
+    Bureau :
+      type : string
+      nullable : true 
+
+  oneToOne:
+    Immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+            name: Immeuble_id
+            referencedColumnName: id
+            onDelete: CASCADE
+  oneToOne:
+    AnnulGerance:
+      targetEntity: AnnulGerance
+      joinColumn:
+            name: AnnulGerance_id
+            referencedColumnName: id
+            onDelete: CASCADE
+  oneToOne:
+    DecGer:
+      targetEntity: DecGer
+      joinColumn:
+            name: DecGer_id
+            referencedColumnName: id
+            onDelete: CASCADE

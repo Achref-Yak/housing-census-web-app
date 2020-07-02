@@ -1,0 +1,18 @@
+Entities\Document:
+  type: entity
+  table: Document
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    URL :
+      type: string
+      nullable: true
+  manyToOne:
+    Immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+        name: Immeuble_id
+        referencedColumnName: id

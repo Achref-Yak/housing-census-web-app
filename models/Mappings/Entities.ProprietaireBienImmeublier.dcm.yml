@@ -1,0 +1,63 @@
+Entities\Achat:
+  type: entity
+  table: Achat
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    Devise :
+      type : string 
+      nullable : true
+    PrixAchat :
+      type : integer 
+      nullable : true 
+    DateSignatureSnit :
+      type : date 
+      nullable : true
+    DateTransfertProp:
+      type : date 
+      nullable : true
+    QuotePartEtat :
+      type : string 
+      nullable : true      
+    DateTransfertCorp :
+      type : date 
+      nullable : true 
+    PrixAchat :
+      type : integer
+      nullable : true 
+    TauxCharge :
+      type : integer 
+      nullable : true        
+    ReglementProp :
+      type : string 
+      nullable : true  
+    ProprietaireBienImmeublier :
+      type : string 
+      nullable : true  
+       
+
+  oneToOne:
+    Immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+            name: Immeuble_id
+            referencedColumnName: id
+            onDelete: CASCADE
+  oneToOne:
+    ReglementProp:
+      targetEntity: ReglementProp
+      joinColumn:
+            name: ReglementProp_id
+            referencedColumnName: id
+            onDelete: CASCADE
+  oneToOne:
+    ProprietaireBienImmeublier:
+      targetEntity: ProprietaireBienImmeublier
+      joinColumn:
+            name: ProprietaireBienImmeublier_id
+            referencedColumnName: id
+            onDelete: CASCADE
+ 

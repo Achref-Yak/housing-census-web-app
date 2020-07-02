@@ -1,0 +1,75 @@
+Entities\FicheTechnique:
+  type: entity
+  table: FicheTechnique
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    Code_TF:
+      type: string
+      nullable: true 
+    Adresse:
+      type: string
+      nullable: true  
+    CodeImmeuble:
+      type: string
+      nullable: true
+    Nordre:
+      type: string
+      nullable: true
+    Categorie:
+      type: integer
+      nullable: true
+    Plan:
+      type: integer
+      nullable: true
+    NumImmeuble:
+      type: integer
+      nullable: true
+    NumLocal:
+      type: integer
+      nullable: true
+    NumEtage:
+      type: integer
+      nullable: true
+    CodeMunicipal:
+      type: string
+      nullable: true
+    GPS:
+      type: string
+      nullable: true
+    Etat:
+      type: integer
+      nullable: true   
+    DateAq:
+      type: string
+      nullable: true   
+    DateTrans:
+      type: string
+      nullable: true 
+    DateCons:
+      type: string
+      nullable: true 
+    DecisionGestion:
+      type: string
+      nullable: true
+    AdresseAdmin:
+      type: string
+      nullable: true
+  oneToOne:
+    Immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+        name: Immeuble_id
+        referencedColumnName: id
+
+
+
+
+
+
+  
+   
+   

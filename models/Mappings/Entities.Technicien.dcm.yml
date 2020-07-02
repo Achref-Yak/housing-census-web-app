@@ -1,0 +1,31 @@
+Entities\Technicien:
+  type: entity
+  table: Technicien
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    UserName:
+      type: string
+      nullable: false
+    Password:
+      type: string
+      nullable : false
+    Nom:
+      type: string
+      nullable: true
+    Prenom :
+      type: string
+      nullable: true
+    Email :
+      type: string
+      nullable: true
+    JoinedDate:
+      Type: date
+      nullable: true
+    LastConnectDate:
+      Type: date 
+      nullable: true
+ 

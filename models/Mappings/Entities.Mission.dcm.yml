@@ -1,0 +1,29 @@
+Entities\Mission:
+  type: entity
+  table: Mission
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    Adresse :
+      type : string 
+      nullable : true
+    Etat :
+      type: integer
+      nullable: true
+  oneToOne:
+    Immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+            name: Immeuble_id
+            referencedColumnName: id
+            onDelete: CASCADE
+  oneToMany:
+    Tech:
+      targetEntity: Technicien
+      joinColumn:
+            name: Tech
+            referencedColumnName: id
+            onDelete: CASCADE

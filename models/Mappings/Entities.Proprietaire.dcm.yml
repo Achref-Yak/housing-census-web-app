@@ -1,0 +1,42 @@
+Entities\Proprietaire:
+  type: entity
+  table: Proprietaire
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    Identite :
+      type: string
+      nullable: true
+    Nationalite :
+      type: string
+      nullable: true
+    QuotPar :
+      type: string
+      nullable: true
+    DateTrans :
+      type : string
+      nullable : true
+    DateCons : 
+      type: string
+      format : date
+      nullable : true
+    DateAq :
+      type : string
+      format : date
+      nullable : true
+    DecisionGestion :
+      type : string
+      nullable : true
+  manyToOne:
+    Immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+        name: Immeuble_id
+        referencedColumnName: id
+ 
+    
+
+    

@@ -1,0 +1,110 @@
+Entities\Local:
+  type: entity
+  table: Local
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    Code_Local :
+      type: string
+      nullable: true
+    CodeLocataire:
+      type: string
+      nullable : false
+    Etage :
+      type: string
+      nullable: true
+    Surface :
+      type: string
+      nullable: true
+    Nlocal :
+      type: integer
+      nullable: true
+    Nomlocataire :
+      type: string
+      nullable: true
+    NonBatis :
+      type: integer
+      nullable: true
+    Batis :
+      type: integer
+      nullable: true
+    NatureLocal :
+      type: string
+      nullable: true
+    ValeurLocation :
+      type: integer
+      nullable: true
+    NomFamilleOccupant :
+      type: string
+      nullable: true
+    CuisineInde :
+      type: integer
+      nullable: true
+    SalleEau :
+      type: integer
+      nullable: true
+    Accessibilite:
+      type: integer
+      nullable: true
+    EclairageN:
+      type: string
+      nullable: true
+    MoyenChauffage:
+      type: string
+      nullable: true
+    Ventillation:
+      type: string
+      nullable: true
+    Humidite:
+      type: string
+      nullable: true
+    DistEau:
+      type: integer
+      nullable: true
+    EvacC:
+      type: integer
+      nullable: true
+    Usag :
+      type: integer
+      nullable: true
+    Structurelle :
+      type: int
+      nullable: true
+    Electrique :
+      type: int
+      nullable: true
+    Plomberie :
+      type: int
+      nullable: true
+    Enduit :
+      type: int
+      nullable: true
+    Ouvertures :
+      type: int
+      nullable: true
+    Fonctionelle :
+      type: int
+      nullable: true
+    Spacial :
+      type: int
+      nullable: true
+    Peinture :
+      type: int
+      nullable: true
+    etatlocal :
+      type: int
+      nullable: true
+  manyToOne:
+    Immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+        name: Immeuble_id
+        referencedColumnName: id
+ 
+
+
+
+
