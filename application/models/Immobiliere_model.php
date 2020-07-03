@@ -5,6 +5,8 @@ class Immobiliere_model extends CI_Model {
     {
         $this->load->database();
     }
+
+
     public function get_gestion_all($immeuble_id = FALSE, $limit = FALSE, $offset = FALSE){
  
 /*
@@ -78,6 +80,8 @@ class Immobiliere_model extends CI_Model {
  
 
     }
+
+    
 
 
     public function update_achat()

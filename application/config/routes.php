@@ -54,9 +54,15 @@ $route['404_override'] = '';
 $route['fichetechnique/create'] = 'fichetechnique/create';
 $route['fichetechnique/(:any)'] = 'fichetechnique/view/$1';
 $route['fichetechnique'] = 'fichetechnique/index';
+$route['local'] = 'local/index';
 $route['missions'] = 'missions/index';
 $route['missions/(:any)'] = 'missions/view/$1';
+
+$route['local/create/(:any)'] = 'local/create/$1';
 $route['local/updatelocal/(:any)'] = 'local/updatelocal/$1';
+$route['local/updatehistorique/(:any)'] = 'local/updatehistorique/$1';
+$route['local/(:any)'] = 'local/view/$1';
+
 $route['immobilier/updateachat/(:any)'] = 'immobilier/updateachat/$1';
 $route['immobilier/updategestion/(:any)'] = 'immobilier/updategestion/$1';
 $route['immobilier/create_prop_bien/(:any)'] = 'immobilier/create_prop_bien/$1';

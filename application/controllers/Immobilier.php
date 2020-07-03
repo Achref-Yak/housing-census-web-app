@@ -3,7 +3,7 @@
 		public function index($offset = 0){	
 	 
 			$data['gestion'] = $this->Immobiliere_model->get_gestion_all();
-		
+			
 			$this->load->view('templates/header', $data);
 			$this->load->view('fichetechnique/index', $data);
 		}
@@ -23,7 +23,6 @@
 				$this->load->view('immobilier/create', $data);
 		 
 			} else {
-				
 
 				$this->Immobiliere_model->create_immeuble();
 				redirect("immobilier/create");
@@ -50,6 +49,9 @@
 	}		
 
         public function view($immeuble = NULL){
+			$data['locaux'] = $this->Local_model->get_local_all($immeuble);
+			$data['propbiens'] = $this->Local_model->get_propbien_all($immeuble);
+			$data['propregs'] = $this->Local_model->get_propimmob_all($immeuble);
 			$data['gestion'] = $this->Immobiliere_model->get_gestion_all($immeuble);
 			$data['achat'] = $this->Immobiliere_model->get_achat_all($immeuble);
 
@@ -62,6 +64,9 @@
 			$this->load->view('immobilier/view', $data);
  
 		}
+
+
+		
 
 		public function updategestion($im){
 		

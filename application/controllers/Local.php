@@ -1,32 +1,27 @@
 <?php
-	class Immobilier extends CI_Controller{
-		public function index($offset = 0){	
-	 
-			$data['gestion'] = $this->Immobiliere_model->get_gestion_all();
-		
-			$this->load->view('templates/header', $data);
-			$this->load->view('fichetechnique/index', $data);
-		}
-
-		public function create(){
+	class Local extends CI_Controller{
 
 
-			$data['title'] = 'Create Post';
+		public function create($im){
 
-			$data['gestion'] = $this->Immobiliere_model->get_gestion_all();
+
+			$data['id'] =  $im;
+
+		 
 
 			$this->form_validation->set_rules('TF', 'TF', 'required');
 			$this->form_validation->set_rules('Zone', 'Zone', 'required');
 
 			if($this->form_validation->run() === FALSE){
 				$this->load->view('templates/header');
-				$this->load->view('immobilier/create', $data);
+				$this->load->view('local/create', $data);
 		 
 			} else {
 				
 
-				$this->Immobiliere_model->create_immeuble();
-				redirect("immobilier/create");
+				$this->Local_model->create_local();
+				$this->load->view('templates/header');
+				$this->load->view('local/create', $data);
 			
 			}
 		}
@@ -50,40 +45,58 @@
 	}		
 
         public function view($immeuble = NULL){
-			$data['gestion'] = $this->Immobiliere_model->get_gestion_all($immeuble);
-			$data['achat'] = $this->Immobiliere_model->get_achat_all($immeuble);
-
+			$data['gestion'] = $this->Local_model->get_localgestion_all($immeuble);
+            $data['histo'] = $this->Local_model->get_historique_all($immeuble);
+            
 			if(empty($data['gestion'])){
 				show_404();
 			}
  
 
 			$this->load->view('templates/header');
-			$this->load->view('immobilier/view', $data);
+			$this->load->view('local/view', $data);
  
-		}
+        }
+        
+
+
+        public function createlocal($imId)
+        {
+     
+
+			$this->Local_model->create_local();
+
+			// Set message
+			$this->session->set_flashdata('post_updated', 'Your post has been updated');
+
+			redirect('local/create/'.$imId);
+    
+        }
 
 		public function updatelocal($id){
 		
 
-			$this->Immobiliere_model->update_gestion();
+			$this->Local_model->update_gestion();
 
 			// Set message
 			$this->session->set_flashdata('post_updated', 'Your post has been updated');
 
 			redirect('local/'.$id);
-		}
+        }
+        
 
-		public function updateachat($im){
+        public function updatehistorique($id){
 		
 
-			$this->Immobiliere_model->update_achat();
+			$this->Local_model->update_historique();
 
 			// Set message
 			$this->session->set_flashdata('post_updated', 'Your post has been updated');
 
-			redirect('immobilier/'.$im);
-		}
+			redirect('local/'.$id);
+        }
+        
+
 
 		 
 	}
