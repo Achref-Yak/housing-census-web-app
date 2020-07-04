@@ -76,7 +76,7 @@
 			// Set message
 			$this->session->set_flashdata('post_updated', 'Your post has been updated');
 
-			redirect('local/'.$im);
+			redirect('immobilier/view/'.$im);
 		}
 
 		public function updateachat($im){

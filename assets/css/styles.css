@@ -1,3 +1,15 @@
+b{
+  color: #525252;
+}
+h4{
+   color: #525252;
+}
+ 
+* {
+  font-family: 'Roboto';
+ 
+}
+
 body{
   overflow-x: hidden;
   background-color: #F2F7FE; /* Black*/
@@ -6,8 +18,8 @@ body{
 
 .sidenav {
     height: 100%; /* 100% Full-height */
-    width: 100%; /* 0 width - change this with JavaScript */
-   
+    width: 15%; /* 0 width - change this with JavaScript */
+    position: fixed;
     background-color: #FFFFFF; /* Black*/
     
   }
@@ -16,21 +28,35 @@ body{
   .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
+    font-size: 20px;
+    color: #525252;
     display: block;
     transition: 0.3s;
   }
   
   /* When you mouse over the navigation links, change their color */
   .sidenav a:hover {
-    color: #f1f1f1;
+    color: #4134f0;
   }
+label{
+  color: rgb(143, 143, 143);
+}
 
+.marginspace{
+  margin-bottom: 50px;
+}
 
-  .con{
+.con{
+    box-shadow: 2px 2px 2px 0px #e0dede;
     border-radius:5px;
     padding: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     background-color: #FFFFFF /* Black*/
   }
+
+
+.submitm{
+  margin-left: 15px;
+}
+
+

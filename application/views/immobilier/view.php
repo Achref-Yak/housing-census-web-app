@@ -2,32 +2,22 @@
 
 <?php echo validation_errors(); ?>
 
+
+<ul class="list-group">
+  
+   
+<div class="row">
 <?php foreach($locaux as $local) : ?>
-<div>	
-<a href="http://localhost/snittest/local/<?php echo $local['id']  ?>">Visit W3Schools</a>
-
- <h2>  <?php echo $local['codelocal'];?> </h2>
+ <div class="col-3">
+    <li class="list-group-item"> <?php echo $local['codelocal'];?></a></li>
+ </div>
 </div>
-<?php endforeach ?>
-
-<?php foreach($propbiens as $propbien) : ?>
-<div>	
  
- <h2>  <?php echo $propbien['proprietaire'];?> </h2>
-</div>
-
-
-
-
 <?php endforeach ?>
+</ul>
 
-<?php foreach($propregs as $propreg) : ?>
-<div>	
- 
- <h2>  <?php echo $propreg['proprietaire'];?> </h2>
-</div>
 
-<?php endforeach ?>
+
 
 
  
@@ -41,11 +31,10 @@
 
 
 
-
 <div class="fluid-container">
   <div class="row">
     <div class="col-2">
-      <div class="sidenav">
+      <div class="sidenav" style="position:fixed">
 
       
   <a href="#">About</a>
@@ -54,14 +43,82 @@
   <a href="#">Contact</a>
       </div>
     </div>
-    <div class="col-8">
+    <div class="col-8 marginspace">
+    
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+ 
+    <li class="breadcrumb-item"><a href="http://localhost/snittest/missions">Missions</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Immobilier</li>
+    <li class="breadcrumb-item" aria-current="page"> <a   data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Local
+  </a></li>
+  </ol>
+</nav>
+
+<div class="collapse marginspace con" id="collapseExample">
+     
+<h4>Liste des locaux</h4> 
+ 
+ 
+
+
+<ul class="list-group">
+<li class="list-group-item"> <div class="row">
+    
+   
+<div class="col-6">	
+<b>Code Local</b>
+
+</div>
+<div class="col-6">	
+<b>Date Creation</b>
+
+</div>
+
+</div></li>
+<h2>   </h2>
+<?php foreach($locaux as $local) : ?>
+
+    <a href="http://localhost/snittest/local/<?php echo $local['id']  ?>" class="list-group-item list-group-item-action list-group-item-primary">
+<div class="row">
+    
+    <div class="col-6">	
+         <?php echo $local['codelocal'];?> 
+
+</div>
+<div class="col-6">	
+         <?php echo $local['datecreation'];?> 
+
+</div>
+ 
+ 
+</div>
+
+</a>
+<h2>   </h2>
+
+
+<?php endforeach ?>
+</ul>
+
+
+
+ 
+ 
+  
+      </div>      
       <div class="con">
     <?php echo form_open('immobilier/updategestion/'.$gestion['immeuble']); ?>
     <div class="form-group">
         
         <input type="hidden" class="form-control" name="id" value="<?php echo $gestion['id'];?>">
       </div>
-      <h3>Gestion</h3>
+      <div class="form-group">
+        
+      <h4 class="">Dossier Gestion</h4>
+      </div>
+    
       <div class="row">
   
    
@@ -81,8 +138,8 @@
             </div>
             <div class="col-3">
                 <div class="form-group">
-                  <label>TypeTF</label>
-                  <input type="text" class="form-control" name="TypeTF" placeholder="TypeTF" value="<?php echo $gestion['TypeTF'];?>">
+                  <label>NombreEtage</label>
+                  <input type="text" class="form-control" name="NombreEtage" placeholder="NombreEtage" value="<?php echo $gestion['NombreEtage'];?>">
                 </div>
             </div>
             <div class="col-3">
@@ -171,25 +228,33 @@
             <label>ContenanceTF</label>
     <input type="text" class="form-control" name="ContenanceTF" placeholder="ContenanceTF" value="<?php echo $gestion['ContenanceTF'];?>">
   </div>
-          
-    </div>
- 
-    
   <div class="form-group">
     <input type="hidden" class="form-control" name="immeuble" value="<?php echo $gestion['immeuble'] ?>">
   </div>
 
-  <button type="submit" class="btn btn-default">Submit</button>
 
+    </div>
+
+   
+  </div>
+  <div class="row">
+    <div class="form-group">
+  <button type="submit" class="btn btn-primary">Enregistrer</button>
+  </div>   
+
+ 
  </form>
     </div>
       </div>
   
 
 
-       <div class="con">
+       <div class="con marginspace">
     <?php echo form_open('immobilier/updateachat/'.$gestion['immeuble']); ?> 
-    <h3>Achat</h3>
+    <div class="form-group">
+    <h4>Dossier Achat</h4>
+  </div> 
+   
     <div class="row" >
     
       <input type="hidden" class="form-control" name="id" placeholder="devise" value="<?php echo $achat['id'];?>" >
@@ -257,27 +322,24 @@
 
      
       </div>
-  
-
+  <input type="hidden" class="form-control" name="immeuble"  value="<?php echo $gestion['immeuble'];?>">
+  </div>
+  <div class="row">
+<button type="submit" class="btn btn-primary" style="margin-bottom: 50px;">Submit</button>
+</div>  
 </form>
-<input type="hidden" class="form-control" name="immeuble"  value="<?php echo $gestion['immeuble'];?>">
 
-<button type="submit" class="btn btn-default">Submit</button>
-      </div>
-       </div>
+    
+
+    
       
  
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Proprietaire du Bien Immobilier
-  </button>
-
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
-  Proprietaire du Bien Immobilier
-  </button>
+ 
 </p>
-<div class="collapse" id="collapseExample">
+<div class="collapse show marginspace" id="collapseExample">
 <?php echo form_open('immobilier/create_prop_reglement/'.$gestion["immeuble"].''); ?> 
-<h4>Reglement du Proprietaire</h4>      
+ 
+<h4>Reglement du Proprietaire</h4>   
 <div class="row">
       <input type="hidden" class="form-control" name="id" placeholder="devise" value="<?php echo $achat['id'];?>" >
    
@@ -309,12 +371,71 @@
             </div>
             
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
+       
 </form>
+ 
 
-     
+
+<ul class="list-group">
+<li class="list-group-item"> <div class="row">
+    
+    <div class="col-3">	
+       <b>Proprietaire</b>
+
+</div>
+<div class="col-3">	
+<b>Du</b>
+
+</div>
+<div class="col-3">	
+<b>Au</b>
+
+</div>
+<div class="col-3">	
+<b>Mentant Reglement</b>
+
+</div>
+</div></li>
+<h2>   </h2>
+<?php foreach($propregs as $propreg) : ?>
+
+    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">
+<div class="row">
+    
+    <div class="col-3">	
+         <?php echo $propreg['proprietaire'];?> 
+
+</div>
+<div class="col-3">	
+         <?php echo $propreg['du'];?> 
+
+</div>
+<div class="col-3">	
+         <?php echo $propreg['au'];?> 
+
+</div>
+<div class="col-3">	
+         <?php echo $propreg['mentantReglement'];?> 
+
+</div>
+</div>
+
+</a>
+<h2>   </h2>
+
+
+<?php endforeach ?>
+</ul>
+
+
+
+ 
+ 
+  
       </div>
-      <div class="collapse" id="collapseExample1">
+      <div class="collapse show marginspace" id="collapseExample1">
+  
 <?php echo form_open('immobilier/create_prop_bien/'.$gestion["immeuble"].''); ?> 
 <h4>Proprietaire du Bien Immobilier</h4> 
 <div class="row">
@@ -355,23 +476,83 @@
            
                 <input type="hidden" class="form-control" name="immeuble" placeholder="immeuble" value="<?php echo $gestion['immeuble'] ?>">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+ 
 </form>
-            
+<li class="list-group-item"> <div class="row">
+    
+    <div class="col-4">	
+       <b>Proprietaire</b>
+
+</div>
+<div class="col-2">	
+<b>Nationalite</b>
+
+</div>
+<div class="col-2">	
+<b>Quote Part</b>
+
+</div>
+<div class="col-2">	
+<b>Adresse</b>
+
+</div>
+<div class="col-2">	
+<b>Rip</b>
+
+</div>
+</div></li>
+<h2></h2>
+<?php foreach($propbiens as $propbien) : ?>
+
+<a href="#" class="list-group-item list-group-item-action list-group-item-primary">
+<div class="row">
+
+<div class="col-4">	
+     <?php echo $propbien['proprietaire'];?> 
+
+</div>
+<div class="col-2">	
+     <?php echo $propbien['nationalite'];?> 
+
+</div>
+<div class="col-2">	
+     <?php echo $propbien['quotepart'];?> 
+
+</div>
+<div class="col-2">	
+     <?php echo $propbien['adresse'];?> 
+  
+</div>
+<div class="col-2">	
+     <?php echo $propbien['rip'];?> 
+     
+</div>
+</div>
+
+</a>
+<h2>   </h2>
+
+
+<?php endforeach ?>
+</ul>
+ 
       </div>
 
      
       </div>
-</div>
       </div>
-
-
-       
-   
-      </div>
-      
-    <div class="col-2">
+<div class="col-2">
       One of three columns
     </div>
+      </div>
+
+
+    
+    
+      </div>
+      
+   
   </div>
 </div>
