@@ -1,60 +1,130 @@
  
 
+
+<div class="fluid-container">
+  <div class="row">
+    <div class="col-2">
+      <div class="sidenav" style="position:fixed">
+
+      
+  <a href="#" style="margin-top:100px">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+      </div>
+    </div>
+
+
+    <div class="col-8 marginspace" style="margin-top:100px">
+    
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">;
+ 
+    <li class="breadcrumb-item"><a href="http://localhost/snittest/missions">Missions</a></li>
+    <li class="breadcrumb-item " aria-current="page"><a href="http://localhost/snittest/immobilier/<?php echo $gestion['immeuble'];?>">Immobilier</a></li>
+    <li class="breadcrumb-item active" aria-current="page">  
+    Local
+  </li>
+  </ol>
+</nav>
 <?php echo validation_errors(); ?>
+<div class="con">
 <h3>Gestion</h3>
 <?php echo form_open('local/updatelocal/'.$gestion['id']); ?>
-<div class="form-group">
-    
-    <input type="text" class="form-control" name="id" value="<?php echo $gestion['id'];?>">
-  </div>
-  <div class="form-group">
-    <label>disponibilite</label>
-    <input type="text" class="form-control" name="disponibilite" placeholder="disponibilite" value="<?php echo $gestion['disponibilite'];?>">
-  </div>
-  <div class="form-group">
-    <label>netage</label>
-    <input type="text" class="form-control" name="netage" placeholder="netage" value="<?php echo $gestion['netage'];?>">
-  </div>
-  <div class="form-group">
-    <label>codelocal</label>
-    <input type="text" class="form-control" name="codelocal" placeholder="codelocal" value="<?php echo $gestion['codelocal'];?>">
-  </div>
-  <div class="form-group">
-    <label>naturelocal</label>
-    <input type="text" class="form-control" name="naturelocal" placeholder="naturelocal" value="<?php echo $gestion['naturelocal'];?>">
-  </div>c
-  <div class="form-group">
-    <label>numeroplan</label>
-    <input type="text" class="form-control" name="numeroplan" placeholder="numeroplan" value="<?php echo $gestion['numeroplan'];?>">
-  </div>
-  <div class="form-group">
-    <label>surface</label>
-    <input type="text" class="form-control" name="surface" placeholder="surface" value="<?php echo $gestion['surface'];?>">
-  </div>
-  <div class="form-group">
-    <label>usag</label>
-    <input type="text" class="form-control" name="usag" placeholder="usage" value="<?php echo $gestion['usag'];?>" >
-  </div>
-  <div class="form-group">
-    <label>dependancebat</label>
-    <input type="text" class="form-control" name="dependancebat" placeholder="dependancebat" value="<?php echo $gestion['dependancebat'];?>">
-  </div>
-  <div class="form-group">
-    <label>surfacebat</label>
-    <input type="text" class="form-control" name="surfacebat" placeholder="surfacebat" value="<?php echo $gestion['surfacebat'];?>">
-  </div>
-  <div class="form-group">
-    <label>dependancenonbat</label>
-    <input type="text" class="form-control" name="dependancenonbat" placeholder="dependancenonbat" value="<?php echo $gestion['dependancenonbat'];?>" >
-  </div>
-  <div class="form-group">
-    <label>surfacenonbat</label>
-    <input type="text" class="form-control" name="surfacenonbat" placeholder="surfacenonbat" value="<?php echo $gestion['surfacenonbat'];?>" >
-  </div>
-  <input type="text" class="form-control" name="immeuble" placeholder="immeuble" value="<?php echo $gestion['immeuble'];?>" >
-  <button type="submit" class="btn btn-default">Submit</button>
 
+<div class="row">
+  
+<input type="hidden" class="form-control" name="id" value="<?php echo $gestion['id'];?>">
+  
+ 
+            <div class="col-3">
+                <div class="form-group">
+                <label>disponibilite</label>
+    <input type="text" class="form-control" name="disponibilite" placeholder="disponibilite" value="<?php echo $gestion['disponibilite'];?>">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                <label>netage</label>
+    <input type="text" class="form-control" name="netage" placeholder="netage" value="<?php echo $gestion['netage'];?>">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                <label>codelocal</label>
+    <input type="text" class="form-control" name="codelocal" placeholder="codelocal" value="<?php echo $gestion['codelocal'];?>">
+                </div>
+            </div>
+            <div class="col-3">
+            <div class="form-group">
+            <label>naturelocal</label>
+    <input type="text" class="form-control" name="naturelocal" placeholder="naturelocal" value="<?php echo $gestion['naturelocal'];?>">
+              </div>
+            </div>
+            <div class="col-3">
+            <div class="form-group">
+            <label>numeroplan</label>
+    <input type="text" class="form-control" name="numeroplan" placeholder="numeroplan" value="<?php echo $gestion['numeroplan'];?>">
+              </div>
+            </div>
+            <div class="col-3">
+            <div class="form-group">
+            <label>naturelocal</label>
+    <input type="text" class="form-control" name="naturelocal" placeholder="naturelocal" value="<?php echo $gestion['naturelocal'];?>">
+              </div>
+            </div>
+            <div class="col-3">
+            <div class="form-group">
+            <label>disponibilite</label>
+    <input type="text" class="form-control" name="disponibilite" placeholder="disponibilite" value="<?php echo $gestion['disponibilite'];?>">
+              </div>
+            </div>
+          
+            <div class="col-3">
+            <div class="form-group">
+            <label>surface</label>
+    <input type="text" class="form-control" name="surface" placeholder="surface" value="<?php echo $gestion['surface'];?>">
+            </div>
+            </div>
+            <div class="col-3">
+            <div class="form-group">
+            <label>usag</label>
+    <input type="text" class="form-control" name="usag" placeholder="usage" value="<?php echo $gestion['usag'];?>" >
+              </div>
+            </div>
+            <div class="col-3">
+            <div class="form-group">
+            <label>dependancebat</label>
+    <input type="text" class="form-control" name="dependancebat" placeholder="dependancebat" value="<?php echo $gestion['dependancebat'];?>">
+              </div>
+            </div>
+            <div class="col-3">
+            <div class="form-group">
+            <label>surfacebat</label>
+    <input type="text" class="form-control" name="surfacebat" placeholder="surfacebat" value="<?php echo $gestion['surfacebat'];?>">
+              </div>
+            </div>
+    
+       
+            <div class="col-3">
+            <div class="form-group">
+            <label>dependancenonbat</label>
+    <input type="text" class="form-control" name="dependancenonbat" placeholder="dependancenonbat" value="<?php echo $gestion['dependancenonbat'];?>" >
+            </div>
+            </div>
+            <div class="col-3">
+            <div class="form-group">
+            <label>surfacenonbat</label>
+    <input type="text" class="form-control" name="surfacenonbat" placeholder="surfacenonbat" value="<?php echo $gestion['surfacenonbat'];?>" >
+            </div>
+            </div>
+    </div>
+    <input type="hidden" class="form-control" name="immeuble" placeholder="immeuble" value="<?php echo $gestion['immeuble'];?>" >
+  <button type="submit" class="btn btn-default">Submit</button>
+ 
  </form>
+</div>
+   
  
  
 

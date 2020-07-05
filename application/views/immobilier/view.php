@@ -2,20 +2,7 @@
 
 <?php echo validation_errors(); ?>
 
-
-<ul class="list-group">
-  
-   
-<div class="row">
-<?php foreach($locaux as $local) : ?>
- <div class="col-3">
-    <li class="list-group-item"> <?php echo $local['codelocal'];?></a></li>
- </div>
-</div>
  
-<?php endforeach ?>
-</ul>
-
 
 
 
@@ -37,13 +24,13 @@
       <div class="sidenav" style="position:fixed">
 
       
-  <a href="#">About</a>
+  <a href="#" style="margin-top:100px">About</a>
   <a href="#">Services</a>
   <a href="#">Clients</a>
   <a href="#">Contact</a>
       </div>
     </div>
-    <div class="col-8 marginspace">
+    <div class="col-8 marginspace" style="margin-top:100px">
     
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
