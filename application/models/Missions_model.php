@@ -5,21 +5,8 @@ class Missions_model extends CI_Model {
     {
         $this->load->database();
     }
-    public function get_missions_all($immeuble_id = FALSE, $limit = FALSE, $offset = FALSE){
-        if($limit){
-            $this->db->limit($limit, $offset);
-        }
-        if($immeuble_id === FALSE){
-            /*$this->db->order_by('mission.id', 'DESC');
- 
-            $query = $this->db->get('mission');
-            
-            return $query->result_array();
-
-            $id = $data['missions']['Tech'];
-            $data['missions']['user'] = $this->User_model->getUserById($id);*/
-
-
+    public function get_missions_affecte_all($immeuble_id = FALSE, $limit = FALSE, $offset = FALSE){
+  
             $this->db
             ->select('mission.*, technicien.*, immeuble.*, fichetechnique.*')
             ->from('mission')
@@ -28,20 +15,22 @@ class Missions_model extends CI_Model {
             ->join('fichetechnique','fichetechnique.Immeuble_id = immeuble.id');
             $query = $this->db->get(); 
             return $query->result_array();
-        }
-
-        $query = $this->db->get_where('mission', array('immeuble_id' => $immeuble_id));
-
         
-
-        return $query->row_array();
  
-
-
        
     }
 
- 
+    public function get_missions_non_affecte_all($immeuble_id = FALSE, $limit = FALSE, $offset = FALSE){
+  
+        $this->db
+        ->select('mission.*, immeuble.*, fichetechnique.*')
+        ->from('mission')
+        ->join('immeuble','immeuble.id = mission.Immeuble_id')
+        ->join('fichetechnique','fichetechnique.Immeuble_id = immeuble.id');
+        $query = $this->db->get(); 
+        return $query->result_array();
+    }
+
  
 
     public function update_mission()

@@ -54,21 +54,25 @@ $route['404_override'] = '';
 $route['fichetechnique/create'] = 'fichetechnique/create';
 $route['fichetechnique/(:any)'] = 'fichetechnique/view/$1';
 $route['fichetechnique'] = 'fichetechnique/index';
+ 
 $route['local'] = 'local/index';
 $route['missions'] = 'missions/index';
 $route['missions/(:any)'] = 'missions/view/$1';
-
-$route['local/create/(:any)'] = 'local/create/$1';
+$route['local/createlocal/(:any)/(:any)'] = 'local/createlocal/$1/$2';
+$route['local/create/(:any)/(:any)'] = 'local/create/$1/$2';
 $route['local/updatelocal/(:any)'] = 'local/updatelocal/$1';
-$route['local/updatehistorique/(:any)'] = 'local/updatehistorique/$1';
-$route['local/(:any)'] = 'local/view/$1';
+$route['local/createoccupant'] = 'local/createoccupant';
 
+$route['local/update_dependance/(:any)'] = 'local/update_dependance/$1';
+$route['local/create_dependance/(:any)'] = 'local/create_dependance/$1';
+$route['local/(:any)/(:any)'] = 'local/view/$1/$2';
 $route['immobilier/updateachat/(:any)'] = 'immobilier/updateachat/$1';
 $route['immobilier/updategestion/(:any)'] = 'immobilier/updategestion/$1';
 $route['immobilier/create_prop_bien/(:any)'] = 'immobilier/create_prop_bien/$1';
 $route['immobilier/create_prop_reglement/(:any)'] = 'immobilier/create_prop_reglement/$1';
+$route['immobilier/create_gerance/(:any)/(:any)/(:any)'] = 'immobilier/create_gerance/$1/$2/$3';
 $route['immobilier/create'] = 'immobilier/create';
 $route['immobilier/update'] = 'immobilier/update';
-$route['immobilier/(:any)'] = 'immobilier/view/$1';
+$route['immobilier/(:any)/(:any)'] = 'immobilier/view/$1/$2';
 $route['(:any)'] = 'pages/view/$1';
 $route['translate_uri_dashes'] = FALSE;

@@ -1,13 +1,10 @@
 <?php
-	class Missions extends CI_Controller{
+	class Photo extends CI_Controller{
 		public function index($offset = 0){	
 			
-			$data['missionsAf'] = $this->Missions_model->get_missions_affecte_all();
-			$data['missionsNf'] = $this->Missions_model->get_missions_non_affecte_all();
-			$data['immeubles'] = $this->Immeuble_model->get_fichetechnique_all();
-
+			$data['photos'] = $this->Photo_model->get_photos_all();
+		 
 			$this->load->view('templates/header', $data);
-			$this->load->view('templates/sidenav');
 			$this->load->view('missions/index', $data);
 		}
 
@@ -23,7 +20,6 @@
 
 			if($this->form_validation->run() === FALSE){
 				$this->load->view('templates/header');
-				$this->load->view('templates/sidenav');
 				$this->load->view('missions/create', $data);
 		 
 			} else {
@@ -48,7 +44,6 @@
  
 
 			$this->load->view('templates/header');
-			$this->load->view('templates/sidenav');
 			$this->load->view('missions/view', $data);
  
 		}

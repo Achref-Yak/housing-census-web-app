@@ -18,30 +18,47 @@
 
 
 
-<div class="fluid-container">
-  <div class="row">
-    <div class="col-2">
-      <div class="sidenav" style="position:fixed">
 
-      
-  <a href="#" style="margin-top:100px">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-      </div>
-    </div>
-    <div class="col-8 marginspace" style="margin-top:100px">
-    
+    <div class="col-8 marginspace" style="margin-top:10px">
+    <?php if($this->session->flashdata('prop_reglement')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('prop_reglement').'</p>'; ?>
+      <?php endif; ?>
+      <?php if($this->session->flashdata('prop_bien')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('prop_bien').'</p>'; ?>
+      <?php endif; ?>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
  
-    <li class="breadcrumb-item"><a href="http://localhost/snittest/missions">Missions</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Immobilier</li>
+    <li class="breadcrumb-item"><a href="<?php echo site_url('/missions'); ?>">Immobiliers</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Immeuble</li>
     <li class="breadcrumb-item" aria-current="page"> <a   data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     Local
   </a></li>
+  <li class="breadcrumb-item" aria-current="page">   <a href="<?php echo site_url('/local/create/'.$gestion['immeuble'].'/'.$gestion['TF']); ?>">Ajouter Local</a></li>
+
+   
+ 
   </ol>
+ 
 </nav>
+
+<li class="list-group-item"> <div class="row">
+    
+    <div class="col-4">	
+       <label>Code TF : </label><b> <?php  echo $gestion['TF']; ?></b>
+
+</div>
+<div class="col-4">	
+<label>Adresse : </label><b> <?php  echo $gestion['AdresseFR']; ?></b>
+
+
+</div>
+<div class="col-4">	
+<label>Créé : </label><b> <?php  echo "7/5/2020" ?></b>
+
+</div>
+ 
+ </li>
 
 <div class="collapse marginspace con" id="collapseExample">
      
@@ -51,23 +68,26 @@
 
 
 <ul class="list-group">
-<li class="list-group-item"> <div class="row">
+<?php if(empty($locaux)) echo  "   <div class='alert alert-danger' role='alert'>
+  Liste vide
+</div>"; else echo "<li class='list-group-item'> <div class='row'>
     
    
-<div class="col-6">	
+<div class='col-6'>	
 <b>Code Local</b>
 
 </div>
-<div class="col-6">	
+<div class='col-6'>	
 <b>Date Creation</b>
 
 </div>
 
 </div></li>
-<h2>   </h2>
+<h2>   </h2>";?>
 <?php foreach($locaux as $local) : ?>
 
-    <a href="http://localhost/snittest/local/<?php echo $local['id']  ?>" class="list-group-item list-group-item-action list-group-item-primary">
+
+    <a href="http://localhost/snittest/local/<?php echo $local['id']."/".$local['codelocal'] ?>" class="list-group-item list-group-item-action list-group-item-primary">
 <div class="row">
     
     <div class="col-6">	
@@ -96,14 +116,18 @@
   
       </div>      
       <div class="con">
+    
     <?php echo form_open('immobilier/updategestion/'.$gestion['immeuble']); ?>
     <div class="form-group">
         
         <input type="hidden" class="form-control" name="id" value="<?php echo $gestion['id'];?>">
       </div>
       <div class="form-group">
-        
-      <h4 class="">Dossier Gestion</h4>
+      <div class="alert alert-info" role="alert">
+<b>Dossier Gestion</b>
+</div>
+ 
+     
       </div>
     
       <div class="row">
@@ -226,7 +250,7 @@
   </div>
   <div class="row">
     <div class="form-group">
-  <button type="submit" class="btn btn-primary">Enregistrer</button>
+  <button type="submit" class="btn btn-primary enre">Enregistrer</button>
   </div>   
 
  
@@ -239,7 +263,10 @@
        <div class="con marginspace">
     <?php echo form_open('immobilier/updateachat/'.$gestion['immeuble']); ?> 
     <div class="form-group">
-    <h4>Dossier Achat</h4>
+    <div class="alert alert-info" role="alert">
+    <b>Dossier Achat</b>
+  </div>
+
   </div> 
    
     <div class="row" >
@@ -268,13 +295,13 @@
             <div class="col-3">
                 <div class="form-group">
                 <label>Date Sign SNIF</label>
-   <input type="text" class="form-control" name="dateSignSnif" placeholder="dateSignSnif" value="<?php echo $achat['dateSignSnif'];?>">
+   <input type="date" class="form-control" name="dateSignSnif" placeholder="dateSignSnif" value="<?php echo $achat['dateSignSnif'];?>">
                 </div>
             </div>
             <div class="col-3">
                 <div class="form-group">
                 <label>dateTransferProp</label>
-   <input type="text" class="form-control" name="dateTransferProp" placeholder="dateTransferProp" value="<?php echo $achat['dateTransferProp'];?>">
+   <input type="date" class="form-control" name="dateTransferProp" placeholder="dateTransferProp" value="<?php echo $achat['dateTransferProp'];?>">
                 </div>
             </div>
             <div class="col-3">
@@ -289,44 +316,222 @@
    <input type="date" class="form-control" name="DateTransEtat" placeholder="DateTransEtat" value="<?php echo $achat['DateTransEtat'];?>">
             </div>
             </div>
-                        <div class="col-3">
-                <div class="form-group">
-                <label>NDecisionGerance</label>
-   <input type="text" class="form-control" name="NDecisionGerance" placeholder="NDecisionGerance" value="<?php echo $achat['NDecisionGerance'];?>">
-            </div>
-                        </div>
-            <div class="col-3">
-                <div class="form-group">
-                <label>DateDecision</label>
-   <input type="date" class="form-control" name="DateDecision" placeholder="DateDecision" value="<?php echo $achat['DateDecision'];?>">
-      </div>
-            </div>
-      <div class="col-3">
-                <div class="form-group">
-                <label>DateAnnulation</label>
-   <input type="date" class="form-control" name="DateAnnulation" placeholder="DateAnnulation" value="<?php echo $achat['DateAnnulation'];?>">
-      </div>
-
+                        
+         
      
-      </div>
+  
   <input type="hidden" class="form-control" name="immeuble"  value="<?php echo $gestion['immeuble'];?>">
   </div>
   <div class="row">
-<button type="submit" class="btn btn-primary" style="margin-bottom: 50px;">Submit</button>
+<button type="submit" class="btn btn-primary enre" style="margin-bottom: 50px;">Enregister</button>
 </div>  
 </form>
+<?php echo form_open('immobilier/create_gerance/'.$gestion['immeuble'].'/'.$achat['id'].'/'.$gestion['TF']); ?> 
+<div class="row" >
+<div class="col-3">
+                <div class="form-group">
+                <label>N°Décision Gérance</label>
+   <input type="text" class="form-control" name="decisionGer" placeholder="N°Décision Gérance">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                <label>Date Décision</label>
+   <input type="date" class="form-control" name="dateDec" placeholder="Date Décision">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                <label>Date d'annulation</label>
+                 <input type="date" class="form-control" name="dateAnnul" placeholder="Date d'annulation"  >
+            </div>
+            </div>
+             
 
-    
 
-    
+ 
+ 
+             
+     
+             </div>
+             <button type="submit" class="btn btn-primary">Ajouter</button>
+
+             </form>   
       
- 
- 
-</p>
+             <ul class="list-group">
+  <?php if(empty($gerances)) echo  "   <div class='alert alert-danger' role='alert'>
+  Liste vide
+</div> ";
+else echo '<li class="list-group-item"> <div class="row">
+      
+<div class="col-3">	
+   <b>Proprietaire</b>
+
+</div>
+<div class="col-2">	
+<b>Nationalite</b>
+
+</div>
+<div class="col-2">	
+<b>Quote Part</b>
+
+</div>
+<div class="col-2">	
+<b>Adresse</b>
+
+</div>
+<div class="col-2">	
+<b>Rip</b>
+
+</div>
+</div></li>' ?>
+  
+  <h2></h2>
+  <?php foreach($gerances as $gerance) : ?>
+  
+  <a   class="list-group-item list-group-item-action list-group-item-primary">
+  <div class="row">
+  
+  <div class="col-3">	
+       <?php echo $gerance['decisionGer'];?> 
+  
+  </div>
+  <div class="col-2">	
+       <?php echo $gerance['dateDec'];?> 
+  
+  </div>
+  <div class="col-2">	
+       <?php echo $gerance['dateAnnul'];?> 
+  
+  </div>
+   
+  </div>
+  
+  </a>
+  <h2>   </h2>
+  
+  
+  <?php endforeach ?>
+  </ul>
+<div class="collapse show marginspace" id="collapseExamplce1">
+  
+  <?php echo form_open('immobilier/create_prop_bien/'.$gestion["immeuble"].''); ?> 
+  <div class="alert alert-info" role="alert"  style="margin-top:20px">
+  <b>Proprietaire du Bien Immobilier</b>
+  </div>
+  <div class="row">
+        <input type="hidden" class="form-control" name="id" placeholder="devise" value="<?php echo $achat['id'];?>" >
+     
+   
+              <div class="col-3">
+                  <div class="form-group">
+                  <label>proprietaire</label>
+                  <input type="text" class="form-control" name="proprietaire" placeholder="proprietaire" >
+                  </div>
+              </div>
+              <div class="col-3">
+                  <div class="form-group">
+                  <label>Nationalite</label>
+   
+                  <input type="text" class="form-control" name="nationalite" placeholder="nationalite" >
+                  </div>
+              </div>
+              <div class="col-3">
+                  <div class="form-group">
+                  <label>Quotepart</label>
+                  <input type="text" class="form-control" name="quotepart" placeholder="quotepart" >
+                  </div>
+              </div>
+              <div class="col-3">
+                  <div class="form-group">
+                  <label>Adresse</label>
+                  <input type="text" class="form-control" name="adresse" placeholder="adresse" >
+                  </div>
+              </div>
+              <div class="col-3">
+                  <div class="form-group">
+                  <label>Rip</label>
+                  <input type="text" class="form-control" name="rip" placeholder="rip" >
+                  </div>
+              </div>
+             
+                  <input type="hidden" class="form-control" name="immeuble" placeholder="immeuble" value="<?php echo $gestion['immeuble'] ?>">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Ajouter</button>
+  
+                  </form>
+                  <ul class="list-group">
+  <?php if(empty($propbiens)) echo  "   <div class='alert alert-danger' role='alert'>
+  Liste vide
+</div> ";
+else echo '<li class="list-group-item"> <div class="row">
+      
+<div class="col-3">	
+   <b>Proprietaire</b>
+
+</div>
+<div class="col-2">	
+<b>Nationalite</b>
+
+</div>
+<div class="col-2">	
+<b>Quote Part</b>
+
+</div>
+<div class="col-2">	
+<b>Adresse</b>
+
+</div>
+<div class="col-2">	
+<b>Rip</b>
+
+</div>
+</div></li>' ?>
+  
+  <h2></h2>
+  <?php foreach($propbiens as $propbien) : ?>
+  
+  <a   class="list-group-item list-group-item-action list-group-item-primary">
+  <div class="row">
+  
+  <div class="col-3">	
+       <?php echo $propbien['proprietaire'];?> 
+  
+  </div>
+  <div class="col-2">	
+       <?php echo $propbien['nationalite'];?> 
+  
+  </div>
+  <div class="col-2">	
+       <?php echo $propbien['quotepart'];?> 
+  
+  </div>
+  <div class="col-2">	
+       <?php echo $propbien['adresse'];?> 
+    
+  </div>
+  <div class="col-2">	
+       <?php echo $propbien['rip'];?> 
+       
+  </div>
+  </div>
+  
+  </a>
+  <h2>   </h2>
+  
+  
+  <?php endforeach ?>
+  </ul>
+   
+  </div>    
 <div class="collapse show marginspace" id="collapseExample">
+
 <?php echo form_open('immobilier/create_prop_reglement/'.$gestion["immeuble"].''); ?> 
- 
-<h4>Reglement du Proprietaire</h4>   
+<div class="alert alert-info" role="alert">
+<b>Reglement du Proprietaire</b>
+
+</div>
+   
 <div class="row">
       <input type="hidden" class="form-control" name="id" placeholder="devise" value="<?php echo $achat['id'];?>" >
    
@@ -339,32 +544,37 @@
             </div>
             <div class="col-3">
                 <div class="form-group">
-                <label>prixAchat</label>
+                <label>Du</label>
  
-   <input type="text" class="form-control" name="du" placeholder="du" >
+   <input type="date" class="form-control" name="du" placeholder="du" >
                 </div>
             </div>
             <div class="col-3">
                 <div class="form-group">
-                <label>tauxDeChange</label>
-                <input type="text" class="form-control" name="au" placeholder="au" >
+                <label>Au</label>
+                <input type="date" class="form-control" name="au" placeholder="au" >
                 </div>
             </div>
             <div class="col-3">
                 <div class="form-group">
-                <label>Date Sign SNIF</label>
+                <label>Mentant Reglement</label>
                 <input type="text" class="form-control" name="mentantReglement" placeholder="mentantReglement" >
                 </div>
             </div>
             
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Ajouter</button>
        
 </form>
  
 
 
 <ul class="list-group">
+<?php if(empty($propregs)) echo  "   <div class='alert alert-danger' role='alert'>
+  Liste vide
+</div> ";
+
+else echo '
 <li class="list-group-item"> <div class="row">
     
     <div class="col-3">	
@@ -383,7 +593,8 @@
 <b>Mentant Reglement</b>
 
 </div>
-</div></li>
+</div></li>'
+?>
 <h2>   </h2>
 <?php foreach($propregs as $propreg) : ?>
 
@@ -421,117 +632,33 @@
  
   
       </div>
-      <div class="collapse show marginspace" id="collapseExample1">
-  
-<?php echo form_open('immobilier/create_prop_bien/'.$gestion["immeuble"].''); ?> 
-<h4>Proprietaire du Bien Immobilier</h4> 
+
+      </div>
+<div class="con">
+<div class="alert alert-info" role="alert">
+<b>Photos d'immeuble</b>
+
+</div>
 <div class="row">
-      <input type="hidden" class="form-control" name="id" placeholder="devise" value="<?php echo $achat['id'];?>" >
-   
- 
-            <div class="col-3">
-                <div class="form-group">
-                <label>proprietaire</label>
-                <input type="text" class="form-control" name="proprietaire" placeholder="proprietaire" >
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                <label>Nationalite</label>
- 
-                <input type="text" class="form-control" name="nationalite" placeholder="nationalite" >
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                <label>Quotepart</label>
-                <input type="text" class="form-control" name="quotepart" placeholder="quotepart" >
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                <label>Adresse</label>
-                <input type="text" class="form-control" name="adresse" placeholder="adresse" >
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                <label>Rip</label>
-                <input type="text" class="form-control" name="rip" placeholder="rip" >
-                </div>
-            </div>
-           
-                <input type="hidden" class="form-control" name="immeuble" placeholder="immeuble" value="<?php echo $gestion['immeuble'] ?>">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-
- 
-</form>
-<li class="list-group-item"> <div class="row">
-    
-    <div class="col-4">	
-       <b>Proprietaire</b>
-
-</div>
-<div class="col-2">	
-<b>Nationalite</b>
-
-</div>
-<div class="col-2">	
-<b>Quote Part</b>
-
-</div>
-<div class="col-2">	
-<b>Adresse</b>
-
-</div>
-<div class="col-2">	
-<b>Rip</b>
-
-</div>
-</div></li>
-<h2></h2>
-<?php foreach($propbiens as $propbien) : ?>
-
-<a href="#" class="list-group-item list-group-item-action list-group-item-primary">
-<div class="row">
-
-<div class="col-4">	
-     <?php echo $propbien['proprietaire'];?> 
-
-</div>
-<div class="col-2">	
-     <?php echo $propbien['nationalite'];?> 
-
-</div>
-<div class="col-2">	
-     <?php echo $propbien['quotepart'];?> 
-
-</div>
-<div class="col-2">	
-     <?php echo $propbien['adresse'];?> 
   
-</div>
-<div class="col-2">	
-     <?php echo $propbien['rip'];?> 
-     
-</div>
-</div>
-
-</a>
-<h2>   </h2>
-
-
-<?php endforeach ?>
-</ul>
+<?php foreach($photos as $photo) : ?>
  
-      </div>
+ <figure class="col-md-4">
+   <a href="http://localhost/snitapp<?php echo $photo['URL'] ?>" data-size="1600x1067">
+     <img alt="picture" src="http://localhost/snitapp<?php echo $photo['URL'] ?>"
+       class="img-fluid">
+   </a>
+ </figure>
 
-     
-      </div>
-      </div>
+
+
+ <?php endforeach ?>  
+
+</div>
+</div>
+      
 <div class="col-2">
-      One of three columns
+      
     </div>
       </div>
 

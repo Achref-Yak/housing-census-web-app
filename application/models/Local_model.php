@@ -17,7 +17,7 @@ class Local_model extends CI_Model {
                     ->where('gestion', array('immeuble' => $immeuble_id));
                     $query = $this->db->get(); */
         
-        
+                    $this->db->order_by('localadmin.datecreation', 'DESC');
                     $query = $this->db->get_where('localadmin', array('immeuble' => $immeuble_id));
                     return $query->result_array();
           
@@ -71,7 +71,33 @@ class Local_model extends CI_Model {
   
     }
 
-    public function get_historique_all($id = FALSE, $limit = FALSE, $offset = FALSE){
+    public function get_dependance_all($id = FALSE){
+        $query = $this->db->get_where('dependance', array('localgestion' => $id));
+        return $query->result_array();
+          
+            }
+
+         
+    public function create_dependance($id = FALSE){
+        $datadep= array(
+            'localgestion' => $id,
+            'dependancebat' => $this->input->post('dependancebat'),
+            'surfacebat' => $this->input->post('surfacebat'),
+            'dependancenonbat' => $this->input->post('dependancenonbat'),
+            'surfacenonbat' => $this->input->post('surfacenonbat')
+            
+        );
+        
+ 
+ 
+
+
+        $this->db->insert('dependance', $datadep);
+     
+
+                  
+    }
+    public function get_occupants_all($id = FALSE, $limit = FALSE, $offset = FALSE){
  
         /*
                     $this->db
@@ -82,15 +108,42 @@ class Local_model extends CI_Model {
                     $query = $this->db->get(); */
         
         
-                    $query = $this->db->get_where('local_historique_gestion', array('local' => $id));
-                    return $query->row_array();
+                    $query = $this->db->get_where('occupant', array('local' => $id));
+                    return $query->result_array();
           
             }
 
  
- 
+            public function update_dependance($id)
+            {
+                 
+                $data = array(
+        
+                   
+                    'dependancebat' => $this->input->post('dependancebat'),
+                    'surfacebat' => $this->input->post('surfacebat'),
+                    'dependancenonbat' => $this->input->post('dependancenonbat'),
+                    'surfacenonbat' => $this->input->post('surfacenonbat'),
+     
+           
+                );
+        
+        
+                $this->db->where('id', $id);
+        
+         
+        
+                return $this->db->update('dependance', $data);
+        
+        
+        
+        
+         
+        
+            }
+        
 
-    public function update_gestion()
+    public function update_gestion($id)
     {
          
         $data = array(
@@ -103,15 +156,12 @@ class Local_model extends CI_Model {
             'numeroplan' => $this->input->post('numeroplan'),
             'surface' => $this->input->post('surface'),
             'usag' => $this->input->post('usag'),
-            'dependancebat' => $this->input->post('dependancebat'),
-            'surfacebat' => $this->input->post('surfacebat'),
-            'dependancenonbat' => $this->input->post('dependancenonbat'),
-            'surfacenonbat' => $this->input->post('surfacenonbat'),
+ 
    
         );
 
 
-        $this->db->where('id', $this->input->post('id'));
+        $this->db->where('id', $id);
 
  
 
@@ -125,61 +175,12 @@ class Local_model extends CI_Model {
     }
 
 
-    public function update_historique()
+    public function create_occupant()
     {
          
    
 
-        $dataA = array(
-            'nomoccupant' => $this->input->post('nomoccupant'),
-            'cinpassport' => $this->input->post('cinpassport'),
-            'lieuemission' => $this->input->post('lieuemission'),
-            'dateemission' => $this->input->post('dateemission'),
-            'typeoccupant' => $this->input->post('typeoccupant'),
-            'codeeoccupant' => $this->input->post('codeeoccupant'),
-            'contradatedebut' => $this->input->post('datedebut'),
-            'contradatefin' => $this->input->post('datefin'),
-            'periodecorresdu' => $this->input->post('periodecorresdu'),
-            'periodecorrespau' => $this->input->post('periodecorrespau'),
-            'naturepiececon' => $this->input->post('naturepiececon'),
-            'montantloyerencaisse' => $this->input->post('montantloyerencaisse'),
-            'loyerdedepart' => $this->input->post('loyerdedepart'),
-            'loyeractuel' => $this->input->post('loyeractuel'),
-            'fraisocc' => $this->input->post('fraisocc'),
-            'fraisrecu' => $this->input->post('fraisrecu'),
-            'tauxact' => $this->input->post('tauxact'),
-
-        );
-        $this->db->where('id', $this->input->post('id'));
-
-        return $this->db->update('local_historique_gestion', $dataA);
-
-
-
-
- 
-
-    }
-
-    public function create_local()
-    {
-
-        $dataloca = array(
-            'datecreation' => date("Y-m-d H:i:s"),
-            'immeuble' => $this->input->post('immeuble')
-            
-        );
-        
- 
- 
-
-
-        $this->db->insert('localadmin', $dataloca);
-        $insert_id = $this->db->insert_id();
-
-
-
-        $dataH = array(
+        $dataO = array(
             'nomoccupant' => $this->input->post('nomoccupant'),
             'cinpassport' => $this->input->post('cinpassport'),
             'lieuemission' => $this->input->post('lieuemission'),
@@ -197,12 +198,43 @@ class Local_model extends CI_Model {
             'fraisocc' => $this->input->post('fraisocc'),
             'fraisrecu' => $this->input->post('fraisrecu'),
             'tauxact' => $this->input->post('tauxact'),
-            'local' => $insert_id,
-            'immeuble' => $this->input->post('immeuble')
+            'local' => $this->input->post('local'),
 
         );
-        $this->db->insert('local_historique_gestion', $dataH);
+        $this->db->insert('occupant', $dataO);
 
+
+
+
+ 
+
+    }
+
+    public function create_local()
+    {
+        // INSERT INTO LOCAL (TECHNIQUE)
+        $datalocaT = array(
+        
+            'Immeuble_id' => $this->input->post('immeuble'),
+            'Code_Local' => $this->input->post('codelocal')
+            
+        );
+        $this->db->insert('local', $datalocaT);
+
+        // INSERT INTO LOCAL (ADMIN)
+        $dataloca = array(
+            'datecreation' => date("Y-m-d H:i:s"),
+            'immeuble' => $this->input->post('immeuble'),
+            'codelocal' => $this->input->post('codelocal')
+            
+        );
+        $this->db->insert('localadmin', $dataloca);
+        $insert_id = $this->db->insert_id();
+
+
+     
+
+        //INSERT INTO GESTION (LOCAL)
         $dataG = array(
 
            
@@ -213,10 +245,6 @@ class Local_model extends CI_Model {
             'numeroplan' => $this->input->post('numeroplan'),
             'surface' => $this->input->post('surface'),
             'usag' => $this->input->post('usag'),
-            'dependancebat' => $this->input->post('dependancebat'),
-            'surfacebat' => $this->input->post('surfacebat'),
-            'dependancenonbat' => $this->input->post('dependancenonbat'),
-            'surfacenonbat' => $this->input->post('surfacenonbat'),
             'local' =>  $insert_id,
             'immeuble' => $this->input->post('immeuble')
         );
@@ -226,32 +254,7 @@ class Local_model extends CI_Model {
 
     }
 
-    public function create_prop_bien($im){
-        $dataP = array(
-       
-            'proprietaire' => $this->input->post('proprietaire'),
-            'nationalite' => $this->input->post('nationalite'),
-            'quotepart' => $this->input->post('quotepart'),
-            'adresse' => $this->input->post('adresse'),
-            'rip' => $this->input->post('rip'),
-            'immeuble' => $im
-        );
-        $this->db->insert('proprietairebienimmobilier', $dataP);
-
-    }
-
-    public function create_prop_reglement($im){
-        $dataP = array(
-       
-            'proprietaire' => $this->input->post('proprietaire'),
-            'du' => $this->input->post('du'),
-            'au' => $this->input->post('au'),
-            'mentantReglement' => $this->input->post('mentantReglement'),
-            'immeuble' => $im
-        );
-        $this->db->insert('reglementproprietaire', $dataP);
-
-    }
+   
 }
 
 

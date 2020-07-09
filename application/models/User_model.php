@@ -54,4 +54,14 @@
 				return false;
 			}
 		}
+
+		public function get_technicien_byid($id){
+			
+			$query = $this->db->get_where('technicien', array('id' => $id));
+
+        
+
+			return $query->row_array();
 	}
+
+}

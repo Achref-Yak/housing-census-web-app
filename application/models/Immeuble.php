@@ -51,6 +51,13 @@ class Immeuble extends CI_Model {
     $this->db->insert('immeuble', $arr);
 
     }
+    public function create_immeuble()
+    {
+ 
+    
+    $this->db->insert('immeuble', $arr);
+
+    }
 }
 
 

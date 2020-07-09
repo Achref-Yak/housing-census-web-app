@@ -10,14 +10,20 @@ class Immeuble_model extends CI_Model {
             $this->db->limit($limit, $offset);
         }
         if($slug === FALSE){
-            $this->db->order_by('fichetechnique.id', 'DESC');
-       
-            $query = $this->db->get('fichetechnique');
+            $this->db
+            ->select('mission.*, technicien.*, immeuble.*, fichetechnique.*')
+            ->from('mission')
+            ->join('technicien','technicien.id = mission.Tech')
+            ->join('immeuble','immeuble.id = mission.Immeuble_id')
+            ->join('fichetechnique','fichetechnique.Immeuble_id = immeuble.id');
+    
+            $query = $this->db->get(); 
+
+ 
             return $query->result_array();
         }
-
-        $query = $this->db->get_where('fichetechnique', array('Code_TF' => $slug));
-        return $query->row_array();
+       
+ 
     }
 
  
@@ -75,10 +81,11 @@ class Immeuble_model extends CI_Model {
         );
 
     $this->db->insert('immeuble', $data);
-    $insert_id = $this->db->insert_id();
-
+    
 
     }
+
+
 }
 
 

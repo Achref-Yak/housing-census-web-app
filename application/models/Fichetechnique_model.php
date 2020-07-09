@@ -21,7 +21,14 @@ class Fichetechnique_model extends CI_Model {
     }
 
  
- 
+    public function get_fichetechnique_byimmeuble($id)
+    {
+
+        $query = $this->db->get_where('fichetechnique', array('Immeuble_id' => $id));
+        return $query->row_array();
+
+
+    }
 
     public function get_fichetechnique_byid($id)
     {

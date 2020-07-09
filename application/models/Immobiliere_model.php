@@ -97,9 +97,6 @@ class Immobiliere_model extends CI_Model {
             'dateTransferProp' => $this->input->post('dateTransferProp'),
             'QuoteParteEtat' => $this->input->post('QuoteParteEtat'),
             'DateTransEtat' => $this->input->post('DateTransEtat'),
-            'NDecisionGerance' => $this->input->post('NDecisionGerance'),
-            'DateDecision' => $this->input->post('DateDecision'),
-            'DateAnnulation' => $this->input->post('DateAnnulation'),
             'immeuble' => $this->input->post('immeuble'),
         );
         $this->db->where('id', $this->input->post('id'));
@@ -115,6 +112,11 @@ class Immobiliere_model extends CI_Model {
 
     public function create_immeuble()
     {
+        
+
+ 
+
+
 
         $dataim = array(
             'created_date' => date("Y-m-d H:i:s"),
@@ -127,7 +129,7 @@ class Immobiliere_model extends CI_Model {
         $this->db->insert('immeuble', $dataim);
         $insert_id = $this->db->insert_id();
 
-
+ 
 
         $dataG = array(
             'TF' => $this->input->post('TF'),
@@ -159,9 +161,7 @@ class Immobiliere_model extends CI_Model {
             'dateTransferProp' => $this->input->post('dateTransferProp'),
             'QuoteParteEtat' => $this->input->post('QuoteParteEtat'),
             'DateTransEtat' => $this->input->post('DateTransEtat'),
-            'NDecisionGerance' => $this->input->post('NDecisionGerance'),
-            'DateDecision' => $this->input->post('DateDecision'),
-            'DateAnnulation' => $this->input->post('DateAnnulation'),
+      
  
             'immeuble' => $insert_id,
         );
@@ -181,6 +181,18 @@ class Immobiliere_model extends CI_Model {
             'AdresseAdmin' => $this->input->post('AdresseFR'),
         );
         $this->db->insert('fichetechnique', $dataF);
+
+
+        $dataM = array(
+            'Adresse' => $this->input->post('AdresseFR'),
+            'Etat' => '0',
+            'Immeuble_id' => $insert_id,
+ 
+        );
+        $this->db->insert('mission', $dataM);
+
+
+        redirect('immobilier/'.$insert_id.'/'.$this->input->post('TF'));
 
     }
 
@@ -210,6 +222,29 @@ class Immobiliere_model extends CI_Model {
         $this->db->insert('reglementproprietaire', $dataP);
 
     }
+    public function get_gerance_all($id)
+    {
+        $query = $this->db->get_where('gerance', array('immeuble' => $id));
+        return $query->result_array();
+
+    }
+    public function create_gerance($id,$im)
+    {
+ 
+        $data = array(
+            'decisionGer' => $this->input->post('decisionGer'),
+            'dateDec' => $this->input->post('dateDec'),
+            'dateAnnul' => $this->input->post('dateAnnul'),
+            'achat' => $id,
+            'immeuble' => $im,
+
+        );
+
+    $this->db->insert('gerance', $data);
+  
+
+    }
+    
 }
 
 

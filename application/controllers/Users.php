@@ -60,7 +60,7 @@
 					// Set message
 					$this->session->set_flashdata('user_loggedin', 'You are now logged in');
 
-					redirect('fichetechnique');
+					redirect('missions');
 				} else {
 					// Set message
 					$this->session->set_flashdata('login_failed', 'Login is invalid');
