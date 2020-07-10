@@ -117,7 +117,7 @@
       </div>      
       <div class="con">
     
-    <?php echo form_open('immobilier/updategestion/'.$gestion['immeuble']); ?>
+    <?php echo form_open('immobilier/updategestion/'.$gestion['immeuble'].'/'.$gestion['TF']); ?>
     <div class="form-group">
         
         <input type="hidden" class="form-control" name="id" value="<?php echo $gestion['id'];?>">
@@ -261,7 +261,7 @@
 
 
        <div class="con marginspace">
-    <?php echo form_open('immobilier/updateachat/'.$gestion['immeuble']); ?> 
+    <?php echo form_open('immobilier/updateachat/'.$gestion['immeuble'].'/'.$gestion['TF']) ?> 
     <div class="form-group">
     <div class="alert alert-info" role="alert">
     <b>Dossier Achat</b>
@@ -415,7 +415,7 @@ else echo '<li class="list-group-item"> <div class="row">
   </ul>
 <div class="collapse show marginspace" id="collapseExamplce1">
   
-  <?php echo form_open('immobilier/create_prop_bien/'.$gestion["immeuble"].''); ?> 
+  <?php echo form_open('immobilier/create_prop_bien/'.$gestion["immeuble"].'/'.$gestion['TF']); ?> 
   <div class="alert alert-info" role="alert"  style="margin-top:20px">
   <b>Proprietaire du Bien Immobilier</b>
   </div>
@@ -526,7 +526,7 @@ else echo '<li class="list-group-item"> <div class="row">
   </div>    
 <div class="collapse show marginspace" id="collapseExample">
 
-<?php echo form_open('immobilier/create_prop_reglement/'.$gestion["immeuble"].''); ?> 
+<?php echo form_open('immobilier/create_prop_reglement/'.$gestion["immeuble"].'/'.$gestion['TF']); ?> 
 <div class="alert alert-info" role="alert">
 <b>Reglement du Proprietaire</b>
 

@@ -32,21 +32,21 @@
 			}
 		}
 		
-		public function create_prop_bien($im){
+		public function create_prop_bien($im, $tf){
 		 
 				$this->session->set_flashdata('prop_bien', 'Proprietaire du bien immobiliere ajouté');
 				$this->Immobiliere_model->create_prop_bien($im);
-				redirect("immobilier/$im");
+				redirect("immobilier/$im/$tf");
 			
 	 
 		}
    
-		public function create_prop_reglement($im){
+		public function create_prop_reglement($im, $tf){
 		 
 
 			$this->Immobiliere_model->create_prop_reglement($im);
 			$this->session->set_flashdata('prop_reglement', 'Reglement Proprietaire ajouté');
-			redirect("immobilier/$im");
+			redirect("immobilier/$im/$tf");
 		
  
 	}	
@@ -86,7 +86,7 @@
 
 		
 
-		public function updategestion($im){
+		public function updategestion($im, $tf){
 		
 
 			$this->Immobiliere_model->update_gestion();
@@ -94,10 +94,10 @@
 			// Set message
 			$this->session->set_flashdata('post_updated', 'Your post has been updated');
 
-			redirect('immobilier/view/'.$im);
+			redirect("immobilier/$im/$tf");
 		}
 
-		public function updateachat($im){
+		public function updateachat($im, $tf){
 		
 
 			$this->Immobiliere_model->update_achat();
@@ -105,7 +105,7 @@
 			// Set message
 			$this->session->set_flashdata('post_updated', 'Your post has been updated');
 
-			redirect('immobilier/'.$im);
+			redirect("immobilier/$im/$tf");
 		}
 
 		 

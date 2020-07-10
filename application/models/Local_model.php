@@ -97,6 +97,9 @@ class Local_model extends CI_Model {
 
                   
     }
+
+
+    
     public function get_occupants_all($id = FALSE, $limit = FALSE, $offset = FALSE){
  
         /*
