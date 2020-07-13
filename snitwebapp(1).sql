@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 09, 2020 at 10:28 PM
+-- Generation Time: Jul 13, 2020 at 07:17 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `achat` (
   `immeuble` int(8) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `immeuble` (`immeuble`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `achat`
@@ -56,7 +56,63 @@ INSERT INTO `achat` (`id`, `devise`, `prixAchat`, `tauxDeChange`, `dateSignSnif`
 (14, '0.000', '0.000', '0.000', '0000-00-00', '0000-00-00', '', '0000-00-00', 34),
 (15, '0.000', '0.000', '0.000', '0000-00-00', '0000-00-00', '', '0000-00-00', 35),
 (16, '0.000', '0.000', '0.000', '0000-00-00', '0000-00-00', '', '0000-00-00', 36),
-(17, '0.000', '0.000', '0.000', '0000-00-00', '0000-00-00', '', '0000-00-00', 37);
+(17, '0.000', '0.000', '0.000', '0000-00-00', '0000-00-00', '', '0000-00-00', 37),
+(18, '0.000', '0.000', '0.000', '0000-00-00', '0000-00-00', '', '0000-00-00', 38),
+(19, '2424.000', '0.000', '0.000', '0000-00-00', '0000-00-00', '', '0000-00-00', 39),
+(20, '1566.000', '0.000', '0.000', '0000-00-00', '0000-00-00', '', '0000-00-00', 40);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `commission_interne_prix`
+--
+
+DROP TABLE IF EXISTS `commission_interne_prix`;
+CREATE TABLE IF NOT EXISTS `commission_interne_prix` (
+  `id` int(8) NOT NULL,
+  `Objet` varchar(255) NOT NULL,
+  `NPV` decimal(12,3) NOT NULL,
+  `PV` decimal(12,3) NOT NULL,
+  `Date` date NOT NULL,
+  `local` int(8) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `commission_interne_prix`
+--
+
+INSERT INTO `commission_interne_prix` (`id`, `Objet`, `NPV`, `PV`, `Date`, `local`) VALUES
+(0, 'kkkkk', '1212.000', '1212.000', '2020-07-17', 42),
+(0, 'xvbxvb', '4242.000', '424.000', '2020-07-12', 42),
+(0, 'vdf', '424.000', '0.000', '2020-07-13', 42),
+(0, 'ddf', '0.000', '0.000', '0000-00-00', 50),
+(0, 'dsfd', '0.000', '0.000', '0000-00-00', 50),
+(0, 'dsfsdf', '0.000', '0.000', '0000-00-00', 50),
+(0, 'ach', '424.000', '454.000', '2020-07-14', 51);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `commission_nationale_cession`
+--
+
+DROP TABLE IF EXISTS `commission_nationale_cession`;
+CREATE TABLE IF NOT EXISTS `commission_nationale_cession` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Objet` varchar(255) NOT NULL,
+  `NPV` decimal(12,3) NOT NULL,
+  `PV` decimal(12,3) NOT NULL,
+  `Date` date NOT NULL,
+  `local` int(8) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `commission_nationale_cession`
+--
+
+INSERT INTO `commission_nationale_cession` (`id`, `Objet`, `NPV`, `PV`, `Date`, `local`) VALUES
+(1, 'dfdsf', '5345.000', '0.000', '2020-07-01', 42);
 
 -- --------------------------------------------------------
 
@@ -73,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `dependance` (
   `dependancenonbat` varchar(255) NOT NULL,
   `surfacenonbat` decimal(8,3) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `dependance`
@@ -94,7 +150,8 @@ INSERT INTO `dependance` (`id`, `localgestion`, `dependancebat`, `surfacebat`, `
 (21, 9, 'xcvxc', '2.000', 'wxcw', '0.000'),
 (22, 14, 'dep', '4242.000', 'sgs', '4242.000'),
 (23, 14, 'dqfdf', '424.000', 'sdsf', '2.000'),
-(24, 9, '', '0.000', '', '0.000');
+(24, 9, '', '0.000', '', '0.000'),
+(25, 17, 'dep', '1166.000', 'de', '1515.000');
 
 -- --------------------------------------------------------
 
@@ -116,7 +173,6 @@ CREATE TABLE IF NOT EXISTS `descg` (
 --
 
 INSERT INTO `descg` (`id`, `Immeuble_id`, `descG`) VALUES
-(1, 1, 0),
 (2, 2, 0),
 (3, 3, 0);
 
@@ -175,7 +231,6 @@ CREATE TABLE IF NOT EXISTS `etat` (
 --
 
 INSERT INTO `etat` (`id`, `Entree`, `FacadeTerrase`, `PartieCom`, `PartieMure`, `PartieBalcon`, `Terras`, `Platon`, `Evacuation`, `Electrique`, `Gaz`, `Eau`, `EtageB`, `EtageM`, `EtageR`, `EtageMC`, `NbrBienB`, `NbrBienM`, `NbrBienR`, `NbrBienMC`, `Immeuble_id`, `EtageRepa`, `NbrBienRepa`) VALUES
-(1, 'Choisir', 'Choisir', 'Choisir', 'Choisir', 'Choisir', 'Choisir', 'Choisir', '', 'Choisir', 'Choisir', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
 (2, 'Choisir', 'Choisir', 'Choisir', 'Choisir', 'Choisir', 'Choisir', 'Choisir', '', 'Choisir', 'Choisir', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0),
 (3, 'Choisir', 'Choisir', 'Choisir', 'Choisir', 'Choisir', 'Choisir', 'Choisir', '', 'Choisir', 'Choisir', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0);
 
@@ -208,23 +263,17 @@ CREATE TABLE IF NOT EXISTS `fichetechnique` (
   `AdresseAdmin` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_D0701DCBE5EA01E8` (`Immeuble_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `fichetechnique`
 --
 
 INSERT INTO `fichetechnique` (`id`, `Code_TF`, `Adresse`, `CodeImmeuble`, `Nordre`, `Categorie`, `Plan`, `NumImmeuble`, `NumLocal`, `NumEtage`, `CodeMunicipal`, `Etat`, `Immeuble_id`, `GPS`, `DateAq`, `DateTrans`, `DateCons`, `DecisionGestion`, `AdresseAdmin`) VALUES
-(1, 'TF1', 'Manouba 2011 مدرسة الطفولة', 'IM123', '5153', 1, 0, 0, 556, 0, '', NULL, 1, '10.1121762 + 36.8093384', '', '', '', '', ''),
-(65, 'TF1412', 'Manouba 2011 مدرسة الطفولة', 'IM784', '5421', 2, 1, 0, 0, 0, '', NULL, 2, '10.1119864 + 36.8092591', '', '', '', '', 'tunis'),
+(65, 'TF1412', 'Manouba 2011 مدرسة الطفولة', 'IM784', '5421', 2, 1, 0, 0, 0, '', NULL, 2, '10.1119864 + 36.8092591', '', '', '', '', 'Manouba'),
 (82, 'Lmmmm', '', '', NULL, 0, 0, 0, NULL, NULL, '', NULL, 30, '', '', '', '', '', ''),
-(83, 'dcdfdfwb', '', '', NULL, 0, 0, 0, NULL, NULL, '', NULL, 31, '', '', '', '', '', ''),
-(84, 'gfhdsf', '', '', NULL, 0, 0, 0, NULL, NULL, '', NULL, 32, '', '', '', '', '', ''),
-(85, 'neww', 'sdfsdf', '', NULL, 0, 0, 0, NULL, NULL, '', NULL, 33, '', '', '', '', '', 'sdfsdf'),
-(86, 'sfsdf', '', '', NULL, 0, 0, 0, NULL, NULL, '', NULL, 34, '', '', '', '', '', ''),
-(87, 'fbfdb', '', '', NULL, 0, 0, 0, NULL, NULL, '', NULL, 35, '', '', '', '', '', ''),
-(88, 'svsvcxv', '', '', NULL, 0, 0, 0, NULL, NULL, '', NULL, 36, '', '', '', '', '', ''),
-(89, 'dsfsdss', '', '', NULL, 0, 0, 0, NULL, NULL, '', NULL, 37, '', '', '', '', '', '');
+(83, 'dcdfdfwb', '', '', NULL, 0, 0, 0, 0, 0, '', NULL, 31, '', '', '', '', '', 'dfdf'),
+(92, 'NewImmeuble', 'Tunis', '', NULL, 0, 0, 0, NULL, NULL, '', NULL, 40, '', '', '', '', '', 'Tunis');
 
 -- --------------------------------------------------------
 
@@ -241,14 +290,15 @@ CREATE TABLE IF NOT EXISTS `gerance` (
   `achat` int(11) NOT NULL,
   `immeuble` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gerance`
 --
 
 INSERT INTO `gerance` (`id`, `decisionGer`, `dateDec`, `dateAnnul`, `achat`, `immeuble`) VALUES
-(3, 23213, '2020-07-20', '2020-07-23', 1, 2);
+(3, 23213, '2020-07-20', '2020-07-23', 1, 2),
+(4, 0, '0000-00-00', '0000-00-00', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -279,22 +329,19 @@ CREATE TABLE IF NOT EXISTS `gestion` (
   `CodeImmeubilier` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `immeuble` (`immeuble`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `gestion`
 --
 
 INSERT INTO `gestion` (`id`, `TF`, `TypeTF`, `NatureConst`, `ContenanceTF`, `AnneConst`, `AdresseFR`, `AdresseAR`, `Zone`, `Localite`, `Governorat`, `CodePostal`, `Bureau`, `EtapeGestionTitre`, `PlanConst`, `NombreEtage`, `NombreLocaux`, `immeuble`, `CodeImmeubilier`) VALUES
-(18, 'TF1412', 'dfgdf', 'fdgfd', '', '2020-06-03', 'Tunis', 'sdfdf', 'dsf', 'sdfdsf', 'sdfds', 0, '', 'jlkjl', '', '14', 0, 2, ''),
+(18, 'TF1412', 'dfgdf', 'fdgfd', '', '2020-06-03', 'Manouba', 'sdfdf', 'dsf', 'sdfdsf', 'sdfds', 0, '', 'jlkjl', '', '14', 0, 2, ''),
 (32, 'neww', '', '', '', '0000-00-00', 'sdfsdf', 'arab', 'sdfsdf', '', 'tunis', 0, '', '', '', '', 0, 33, ''),
-(31, 'gfhdsf', '', '', '', '0000-00-00', '', 'hammamet', 'sdf', '', '', 0, '', '', '', '', 0, 32, ''),
+(31, 'gfhdsf', '', '', '', '0000-00-00', 'Manouba', 'hammamet', 'sdf', '', '', 0, '', '', '', '', 0, 32, ''),
 (30, 'dcdfdfwb', '', '', '', '0000-00-00', 'dfdf', '', 'fdfq', '', '', 0, '', '', '', '', 0, 31, ''),
 (29, 'Lmmmm', '', '', '', '0000-00-00', '', '', 'dfdf', '', '', 0, '', '', '', '', 0, 30, ''),
-(33, 'sfsdf', 'b,j', '', '', '0000-00-00', '', '', 'wxc', '', '', 0, '', '', '', '', 0, 34, ''),
-(34, 'fbfdb', '', '', '', '0000-00-00', '', '', 'fb', '', '', 0, '', '', '', '', 0, 35, ''),
-(35, 'svsvcxv', '242', '', '', '0000-00-00', '', '', 'ddfdv', '', '', 0, '', '', '', '', 0, 36, ''),
-(36, 'dsfsdss', '', '', '', '0000-00-00', '', '', 'sdfsf', '', '', 0, '', '', '', '', 0, 37, '');
+(39, 'NewImmeuble', 'sdfdsf', '', '', '0000-00-00', 'Tunis', '', 'dsfdsf', '', '', 0, '', '', '', '', 0, 40, '');
 
 -- --------------------------------------------------------
 
@@ -308,26 +355,28 @@ CREATE TABLE IF NOT EXISTS `immeuble` (
   `Update_by` int(11) DEFAULT NULL,
   `Update_date` datetime DEFAULT NULL,
   `Created_by` int(11) DEFAULT NULL,
-  `Created_date` datetime DEFAULT NULL,
+  `Created_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `immeuble`
 --
 
 INSERT INTO `immeuble` (`id`, `Update_by`, `Update_date`, `Created_by`, `Created_date`) VALUES
-(1, NULL, '2020-05-04 00:00:00', 1, '2020-05-04 00:00:00'),
 (2, NULL, NULL, 1, NULL),
 (3, NULL, NULL, 1, NULL),
-(30, NULL, NULL, NULL, '2020-07-07 17:28:31'),
-(31, NULL, NULL, NULL, '2020-07-07 17:29:55'),
-(32, NULL, NULL, NULL, '2020-07-07 17:50:48'),
-(33, NULL, NULL, NULL, '2020-07-07 17:52:50'),
-(34, NULL, NULL, NULL, '2020-07-09 15:50:35'),
-(35, NULL, NULL, NULL, '2020-07-09 15:51:34'),
-(36, NULL, NULL, NULL, '2020-07-09 15:52:02'),
-(37, NULL, NULL, NULL, '2020-07-09 15:55:01');
+(30, NULL, NULL, NULL, '2020-07-07'),
+(31, NULL, NULL, NULL, '2020-07-07'),
+(32, NULL, NULL, NULL, '2020-07-07'),
+(33, NULL, NULL, NULL, '2020-07-07'),
+(34, NULL, NULL, NULL, '2020-07-09'),
+(35, NULL, NULL, NULL, '2020-07-09'),
+(36, NULL, NULL, NULL, '2020-07-09'),
+(37, NULL, NULL, NULL, '2020-07-09'),
+(38, NULL, NULL, NULL, '2020-07-13'),
+(39, NULL, NULL, NULL, '2020-07-13'),
+(40, NULL, NULL, NULL, '2020-07-13');
 
 -- --------------------------------------------------------
 
@@ -371,19 +420,17 @@ CREATE TABLE IF NOT EXISTS `local` (
   `etatlocal` int(2) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `IDX_4A17A7ECE5EA01E8` (`Immeuble_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `local`
 --
 
 INSERT INTO `local` (`id`, `Code_Local`, `CodeLocataire`, `Etage`, `Surface`, `Nlocal`, `Nomlocataire`, `NonBatis`, `Batis`, `NatureLocal`, `ValeurLocation`, `NomFamilleOccupant`, `CuisineInde`, `SalleEau`, `Accessibilite`, `EclairageN`, `MoyenChauffage`, `Ventillation`, `Humidite`, `DistEau`, `EvacC`, `Immeuble_id`, `Usag`, `Structurelle`, `Electrique`, `Plomberie`, `Enduit`, `Ouvertures`, `Fonctionelle`, `Spacial`, `Peinture`, `etatlocal`) VALUES
-(1, 'yyyyyu', '555885', 'vbjjj', '', NULL, 'Foulen1', 0, 0, '', 0, '', 0, 0, 0, '', '', '', '', 0, 0, 1, 'Commercial', 1, 0, 1, 1, 0, 1, 0, 1, 0),
 (47, 'Local2kkk', '74863', 'Liverpool', '9663588', 88552, 'lllmm', 3, 3, '1kkllvjklll', 144463, 'pourquoi', 1, 1, 0, '', '', '', '', 3, 1, 2, 'Professionnel', 0, 0, 1, 1, 0, 1, 0, 0, 0),
 (80, 'Local1', '', '', '', NULL, 'Foulen1', 0, 0, '', 0, '', 0, 0, 0, '', '', '', '', 0, 0, 3, 'Habitation', 1, 1, 1, 0, 1, 1, 0, 1, 4),
 (82, 'Local21hjk', '142', 'nippon', '1', 8866, '1', 1, 1, '1llommm', 1, '1', 1, 1, 0, '', '', '', '', 1, 1, 2, 'Commercial', 0, 0, 1, 0, 0, 1, 0, 0, 0),
 (83, 'Local21h', '', 'billfffv', '1', 0, '1', 2, 1, '1', 1, '1', 1, 1, 0, '', '', '', '', 1, 1, 2, 'Commercial', 0, 0, 1, 0, 0, 1, 0, 0, 0),
-(86, 'cbnml', '6633366', 'vhhhhj', '', NULL, 'cceeghhhbv', 0, 0, '', 0, '', 0, 0, NULL, '', '', '', '', 0, 0, 1, 'Commercial', 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (96, 'local_TF_1', '', 'bnnkk', '', 0, '', 2, 1, '', 0, '', 0, 0, 0, '', '', '', '', 0, 0, 2, 'Commercial', 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (105, 'local_TF_0', '', '', '', 0, '', 2, 1, '', 0, '', 0, 0, 0, '', '', '', '', 0, 0, 2, 'Commercial', 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (106, 'local_TF_1', '', '', '', 0, '', 2, 1, '', 0, '', 0, 0, 0, '', '', '', '', 0, 0, 2, 'Commercial', 0, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -392,7 +439,10 @@ INSERT INTO `local` (`id`, `Code_Local`, `CodeLocataire`, `Etage`, `Surface`, `N
 (111, 'NewLocal', '114433', 'etage', '', 0, '', 2, 1, '', 0, '7', 0, 0, NULL, 'Faible', 'Suffisant', 'Suffisant', 'Legere', 0, 0, 2, 'Professionnel', 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (112, 'neww', '86666', 'bjkkc', '89655', 99688, 'vhjjjnn', 2, 1, '', 0, '8', 1, 1, NULL, 'Bon', 'Insuffisant', 'Insuffisant', 'Important', 2, 3, 2, 'Professionnel', 0, 1, 1, 1, 0, 0, 1, 1, 0),
 (113, 'new', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 37, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(114, 'loooc', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 37, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(114, 'loooc', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 37, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(115, 'nouveaulocal', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 34, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(125, 'loc123', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 39, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(126, 'loca', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 31, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -407,7 +457,7 @@ CREATE TABLE IF NOT EXISTS `localadmin` (
   `datecreation` date NOT NULL,
   `immeuble` int(8) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `localadmin`
@@ -420,9 +470,7 @@ INSERT INTO `localadmin` (`id`, `codelocal`, `datecreation`, `immeuble`) VALUES
 (38, 'vvvbbb', '2020-07-06', 2),
 (37, 'locaal', '2020-07-06', 2),
 (36, 'Local21hjkjhhhp', '2020-07-05', 2),
-(41, 'NewLocal', '2020-07-07', 2),
-(43, 'new', '2020-07-09', 37),
-(44, 'loooc', '2020-07-09', 37);
+(53, 'loca', '2020-07-13', 31);
 
 -- --------------------------------------------------------
 
@@ -443,7 +491,7 @@ CREATE TABLE IF NOT EXISTS `localgestion` (
   `immeuble` int(11) NOT NULL,
   `local` int(8) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `localgestion`
@@ -452,13 +500,10 @@ CREATE TABLE IF NOT EXISTS `localgestion` (
 INSERT INTO `localgestion` (`id`, `netage`, `codelocal`, `disponibilite`, `naturelocal`, `numeroplan`, `surface`, `usag`, `immeuble`, `local`) VALUES
 (2, '12', 'qsdsdgwvwv', 'qssfq', '', 12, '177.000', 'dqfdqf', 2, 24),
 (8, '744', 'dvdgv', 'hfjh', 'dfgdfg', 0, '0.000', 'hgjyh', 2, 35),
-(9, '', 'Local21hjkjhhhp', '', '', 12, '151.000', '', 2, 36),
+(9, '', 'Local21hjkjhhhp', '', '', 12, '151.000', 'dfdf', 2, 36),
 (10, '', 'locaal', '', '', 0, '0.000', '', 2, 37),
 (11, '', 'vvvbbb', '', '', 12, '1212.000', 'sqd', 2, 38),
-(14, '', 'neww', '', '', 0, '0.000', '', 2, 42),
-(13, '', 'NewLocal', '', '', 0, '0.000', '', 2, 41),
-(15, '', 'new', '', '', 42, '0.000', 'fsdg', 37, 43),
-(16, '', 'loooc', '', '', 252, '0.000', '', 37, 44);
+(25, '', 'loca', '', '', 0, '0.000', '', 31, 53);
 
 -- --------------------------------------------------------
 
@@ -476,23 +521,17 @@ CREATE TABLE IF NOT EXISTS `mission` (
   PRIMARY KEY (`id`),
   KEY `Tech` (`Tech`),
   KEY `Immeuble_id` (`Immeuble_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mission`
 --
 
 INSERT INTO `mission` (`id`, `Adresse`, `Etat`, `Immeuble_id`, `Tech`) VALUES
-(1, 'Tunis', 2, 1, 2),
 (2, 'Manouba', 2, 2, 2),
 (3, 'Ariana', 2, 3, 2),
-(5, '', 0, 31, NULL),
-(6, '', 0, 32, NULL),
-(7, 'sdfsdf', 0, 33, NULL),
-(8, '', 0, 34, NULL),
-(9, '', 0, 35, NULL),
-(10, '', 0, 36, NULL),
-(11, '', 0, 37, NULL);
+(5, '', 0, 31, 2),
+(14, 'Tunis', 0, 40, NULL);
 
 -- --------------------------------------------------------
 
@@ -523,14 +562,23 @@ CREATE TABLE IF NOT EXISTS `occupant` (
   `immeuble` int(11) NOT NULL,
   `local` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `occupant`
 --
 
 INSERT INTO `occupant` (`id`, `nomoccupant`, `cinpassport`, `lieuemission`, `dateemission`, `typeoccupant`, `codeeoccupant`, `contradatedebut`, `contradatefin`, `periodecorresdu`, `periodecorrespau`, `naturepiececon`, `montantloyerencaisse`, `loyerdedepart`, `loyeractuel`, `fraisocc`, `fraisrecu`, `tauxact`, `immeuble`, `local`) VALUES
-(22, 'dsfsdf', '4242', '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '0.000', '0.000', '0.000', '0.000', '0.000', '0.000', 0, 44);
+(30, 'dfdf', '', '', '0000-00-00', '', 'sdf', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '0.000', '0.000', '0.000', '0.000', '0.000', '0.000', 0, 48),
+(29, 'Ach', '535353', '', '2020-07-22', '', 'qfdf', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '0.000', '0.000', '0.000', '0.000', '0.000', '0.000', 0, 45),
+(28, 'wxvwxcv', '2313', '', '0000-00-00', '', 'wcv', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '0.000', '0.000', '0.000', '0.000', '0.000', '0.000', 0, 42),
+(27, 'zsdsqsf', '111', '', '0000-00-00', '', 'sdfsdf', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '0.000', '0.000', '0.000', '0.000', '0.000', '0.000', 0, 42),
+(26, 'dsfsd', '242', '', '0000-00-00', '', 'fsdf', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '0.000', '0.000', '0.000', '0.000', '0.000', '0.000', 0, 42),
+(25, '', '', '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '0.000', '0.000', '0.000', '0.000', '0.000', '21212.000', 0, 42),
+(24, '', '', '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '0.000', '0.000', '0.000', '0.000', '0.000', '0.000', 0, 42),
+(23, '', '', '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '0.000', '0.000', '0.000', '0.000', '0.000', '0.000', 0, 42),
+(22, 'dsfsdf', '4242', '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '0.000', '0.000', '0.000', '0.000', '0.000', '0.000', 0, 44),
+(31, 'sddsf', '535242', '', '0000-00-00', '', '5353', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '0.000', '0.000', '0.000', '0.000', '0.000', '0.000', 0, 52);
 
 -- --------------------------------------------------------
 
@@ -643,7 +691,7 @@ CREATE TABLE IF NOT EXISTS `proprietairebienimmobilier` (
   `rip` int(11) NOT NULL,
   `immeuble` int(8) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `proprietairebienimmobilier`
@@ -658,7 +706,8 @@ INSERT INTO `proprietairebienimmobilier` (`id`, `proprietaire`, `nationalite`, `
 (6, 'rterfg', '', '', '', 0, 24),
 (8, 'prop', 'tunisien', '1/2', 'tunis', 12, 33),
 (10, 'dfdqf', 'dqfd', '42', 'sdf', 0, 33),
-(11, 'proprop', 'algerien', '1/2', '', 0, 33);
+(11, 'proprop', 'algerien', '1/2', '', 0, 33),
+(12, '', '', '', '', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -689,6 +738,91 @@ INSERT INTO `reglementproprietaire` (`id`, `proprietaire`, `du`, `au`, `mentantR
 (5, 'essdf', '2020-07-21', '2020-07-23', '2535.000', 33),
 (6, 'fghfg', '2020-07-14', '2020-07-29', '535.000', 33),
 (7, 'dfqdfq', '2020-07-13', '2020-07-30', '234.000', 33);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resultat_commission_interne_prix`
+--
+
+DROP TABLE IF EXISTS `resultat_commission_interne_prix`;
+CREATE TABLE IF NOT EXISTS `resultat_commission_interne_prix` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `PrixDef` decimal(12,3) NOT NULL,
+  `Date` date NOT NULL,
+  `local` int(8) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `resultat_commission_interne_prix`
+--
+
+INSERT INTO `resultat_commission_interne_prix` (`id`, `PrixDef`, `Date`, `local`) VALUES
+(9, '0.000', '0000-00-00', 52),
+(7, '4324.000', '2020-07-15', 42),
+(8, '4242.000', '2020-07-28', 51),
+(10, '424.000', '2020-07-22', 53);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resultat_commission_nationale`
+--
+
+DROP TABLE IF EXISTS `resultat_commission_nationale`;
+CREATE TABLE IF NOT EXISTS `resultat_commission_nationale` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `typeprix` varchar(255) NOT NULL,
+  `NomAcq` varchar(255) NOT NULL,
+  `Prenom` varchar(255) NOT NULL,
+  `local` int(8) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `resultat_commission_nationale`
+--
+
+INSERT INTO `resultat_commission_nationale` (`id`, `typeprix`, `NomAcq`, `Prenom`, `local`) VALUES
+(2, 'Prix Social', 'dfdsf', 'ff', 42),
+(7, 'Prix Expertisé', 'dfdf', 'df', 51),
+(8, '', '', '', 52),
+(9, 'Prix Social', 'dfdf', 'ddf', 53);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `revente`
+--
+
+DROP TABLE IF EXISTS `revente`;
+CREATE TABLE IF NOT EXISTS `revente` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `NdossierRevente` int(12) NOT NULL,
+  `Ndecision` int(12) NOT NULL,
+  `DateDecision` date NOT NULL,
+  `TypeVente` varchar(20) NOT NULL,
+  `NatureOccupant` varchar(20) NOT NULL,
+  `CodeOccupant` varchar(20) NOT NULL,
+  `NomPrenom` varchar(255) NOT NULL,
+  `CIN` int(8) NOT NULL,
+  `PrixExpertise` decimal(12,3) NOT NULL,
+  `PrixSocial` decimal(12,3) NOT NULL,
+  `PrixSocialActualise` decimal(12,3) NOT NULL,
+  `local` int(12) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `revente`
+--
+
+INSERT INTO `revente` (`id`, `NdossierRevente`, `Ndecision`, `DateDecision`, `TypeVente`, `NatureOccupant`, `CodeOccupant`, `NomPrenom`, `CIN`, `PrixExpertise`, `PrixSocial`, `PrixSocialActualise`, `local`) VALUES
+(1, 104242, 10, '0000-00-00', '', '', '', '', 5, '1212.000', '12.000', '121.000', 42),
+(2, 5876, 0, '0000-00-00', '', '', '', '', 0, '0.000', '0.000', '0.000', 50),
+(3, 0, 0, '0000-00-00', '', '', '', '', 0, '0.000', '0.000', '0.000', 51),
+(5, 424, 0, '0000-00-00', '', '', '', '', 0, '0.000', '0.000', '0.000', 53);
 
 -- --------------------------------------------------------
 
@@ -724,21 +858,24 @@ INSERT INTO `technicien` (`id`, `UserName`, `Password`, `Nom`, `Prenom`, `Email`
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `zipcode` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `register_date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `register_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `type` int(2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `zipcode`, `email`, `username`, `password`, `register_date`) VALUES
-(1, 'ach', '', '', 'ach', '128ecf542a35ac5270a87dc740918404', '2020-06-28 16:39:27');
+INSERT INTO `users` (`id`, `name`, `zipcode`, `email`, `username`, `password`, `register_date`, `type`) VALUES
+(1, 'ach', '', '', 'ach', '128ecf542a35ac5270a87dc740918404', '2020-06-28 16:39:27', 0),
+(2, 'admin', '', '', 'admin', '803ee3f3d305e660f7d8c60488a3aef7', '2020-07-13 02:00:04', 1);
 
 --
 -- Constraints for dumped tables
