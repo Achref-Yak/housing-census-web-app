@@ -1,4 +1,4 @@
- 
+
 
 <?php echo validation_errors(); ?>
 
@@ -26,36 +26,79 @@
       <?php if($this->session->flashdata('prop_bien')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('prop_bien').'</p>'; ?>
       <?php endif; ?>
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
+
+      <a href="<?php echo site_url('/missions'); ?>" class="btn btn-secondary" role="button" aria-pressed="true">Immobiliers</a>
+      <a class="btn btn-primary active"   role="button"   aria-pressed="true">
+    Immeuble
+  </a>
+      <a class="btn btn-secondary"  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Liste des Locaux
+  </a>
+  <?php $var = $this->session->userdata; 
+    if($var['type']==0)
+    
+    echo "<a class='btn btn-secondary' href='".site_url("/local/create/".$gestion['immeuble']."/".$gestion['TF'])."'>Ajouter Local</a>
+    ";
  
-    <li class="breadcrumb-item"><a href="<?php echo site_url('/missions'); ?>">Immobiliers</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Immeuble</li>
-    <li class="breadcrumb-item" aria-current="page"> <a   data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Local
-  </a></li>
-  <li class="breadcrumb-item" aria-current="page">   <a href="<?php echo site_url('/local/create/'.$gestion['immeuble'].'/'.$gestion['TF']); ?>">Ajouter Local</a></li>
+    
+    ?>
+    
 
    
  
-  </ol>
  
-</nav>
 
 <li class="list-group-item"> <div class="row">
     
-    <div class="col-4">	
+    <div class="col-3">	
        <label>Code TF : </label><b> <?php  echo $gestion['TF']; ?></b>
 
 </div>
-<div class="col-4">	
+<div class="col-3">	
 <label>Adresse : </label><b> <?php  echo $gestion['AdresseFR']; ?></b>
 
 
 </div>
-<div class="col-4">	
-<label>Créé : </label><b> <?php  echo "7/5/2020" ?></b>
+<div class="col-3">	
+<label>Créé : </label><b> <?php  echo $immeuble['Created_date'];?></b>
 
+</div>
+ 
+<div class="col-3">	
+ 
+ 
+
+  <?php $var = $this->session->userdata; 
+    if($var['type']==1 && $mission['Tech']==null)
+    {
+      echo ' <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+      echo '    Affecter A
+      </button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
+      foreach($techs as $tech) :
+    
+        echo '<a class="dropdown-item" href="'.site_url("immobilier/affecter/".$gestion['immeuble']."/".$gestion['TF']."/".$tech['id']).'"> '.$tech['Nom'].'</a>';
+ 
+      endforeach;
+      echo '  </div>';
+    } else if($var['type']==1 && $mission['Tech']!=null)
+    {
+      echo '<b>Affecté</b>';
+    }
+    else if($var['type']==0 && $mission['Tech']!=null)
+    {
+      echo '<b>Affecté</b>';
+    }
+    else if($var['type']==0 && $mission['Tech']==null)
+    {
+      echo '<b>Non Affecté</b>';
+    }
+  
+ 
+    ?>
+    
+  
+
+</div>
 </div>
  
  </li>
@@ -87,7 +130,7 @@
 <?php foreach($locaux as $local) : ?>
 
 
-    <a href="http://localhost/snittest/local/<?php echo $local['id']."/".$local['codelocal'] ?>" class="list-group-item list-group-item-action list-group-item-primary">
+    <a href="<?php echo site_url('local/'.$local['id']."/".$local['codelocal']) ?>" class="list-group-item list-group-item-action list-group-item-primary">
 <div class="row">
     
     <div class="col-6">	
@@ -250,7 +293,13 @@
   </div>
   <div class="row">
     <div class="form-group">
-  <button type="submit" class="btn btn-primary enre">Enregistrer</button>
+    <?php $var = $this->session->userdata; 
+    if($var['type']==0)
+    
+    echo '  <button type="submit" class="btn btn-primary enre">Enregistrer</button>';
+    
+    ?>
+
   </div>   
 
  
@@ -323,7 +372,13 @@
   <input type="hidden" class="form-control" name="immeuble"  value="<?php echo $gestion['immeuble'];?>">
   </div>
   <div class="row">
-<button type="submit" class="btn btn-primary enre" style="margin-bottom: 50px;">Enregister</button>
+  <?php $var = $this->session->userdata; 
+    if($var['type']==0)
+    
+    echo '  <button type="submit" class="btn btn-primary enre" style="margin-bottom: 50px;">Enregister</button>';
+    
+    ?>
+
 </div>  
 </form>
 <?php echo form_open('immobilier/create_gerance/'.$gestion['immeuble'].'/'.$achat['id'].'/'.$gestion['TF']); ?> 
@@ -354,7 +409,14 @@
              
      
              </div>
-             <button type="submit" class="btn btn-primary">Ajouter</button>
+             <?php $var = $this->session->userdata; 
+    if($var['type']==0)
+    
+    echo ' <button type="submit" class="btn btn-primary">Ajouter</button>';
+    
+    ?>
+
+             
 
              </form>   
       
@@ -457,7 +519,13 @@ else echo '<li class="list-group-item"> <div class="row">
              
                   <input type="hidden" class="form-control" name="immeuble" placeholder="immeuble" value="<?php echo $gestion['immeuble'] ?>">
                   </div>
-                  <button type="submit" class="btn btn-primary">Ajouter</button>
+                  <?php $var = $this->session->userdata; 
+    if($var['type']==0)
+    
+    echo ' <button type="submit" class="btn btn-primary">Ajouter</button>';
+    
+    ?>
+                  
   
                   </form>
                   <ul class="list-group">
@@ -563,7 +631,13 @@ else echo '<li class="list-group-item"> <div class="row">
             </div>
             
       </div>
-      <button type="submit" class="btn btn-primary">Ajouter</button>
+      <?php $var = $this->session->userdata; 
+    if($var['type']==0)
+    
+    echo ' <button type="submit" class="btn btn-primary">Ajouter</button>';
+    
+    ?>
+      
        
 </form>
  
@@ -655,6 +729,124 @@ else echo '
  <?php endforeach ?>  
 
 </div>
+</div>
+
+<div class="con">
+<div class="alert alert-info" role="alert">
+<b>Fichetechnique - Technicien</b>
+
+</div>
+<div class="row">
+<div class="col-12">
+<ul class="list-group">
+  <li class="list-group-item">Construction :<?php  if($fichetechnique['Categorie']==1) echo " Immeuble"; if($fichetechnique['Categorie']==2) echo " Villa"; if($fichetechnique['Categorie']==3) echo " Garage"  ?></li>
+  <li class="list-group-item">Nombre Des Locaux : <?php echo $fichetechnique['NumLocal'] ?></li>
+  <li class="list-group-item">Nombre D'etages : <?php echo $fichetechnique['NumEtage'] ?></li>
+  <li class="list-group-item">N°Décision De Gestion : <?php echo $fichetechnique['NumEtage'] ?></li>
+  <li class="list-group-item">Code Municipal : <?php echo $fichetechnique['CodeMunicipal'] ?></li>
+  <li class="list-group-item">Plan du Construction :<?php if($fichetechnique['Plan']==1) echo " Oui"; if($fichetechnique['Plan']==0) echo " Non"; ?></li>
+  <li class="list-group-item">Date Transfert :<?php echo $fichetechnique['DateTrans'] ?></li>
+  <li class="list-group-item">Date Construction : <?php echo $fichetechnique['DateCons'] ?></li>
+  <li class="list-group-item">Code D'aquisition : <?php echo $fichetechnique['DateAq'] ?></li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="con">
+<div class="alert alert-info" role="alert">
+<b>Etat - Technicien</b>
+
+</div>
+<div class="row">
+<div class="col-12">
+<ul class="list-group">
+   <li class="list-group-item">Entree : <?php if ($etat['Entree']=='Choisir') echo " "; else echo $etat['Entree']; ?></li>
+  <li class="list-group-item">Terrase : <?php if  ($etat['Terras']=='Choisir') echo " "; else echo $etat['Terras'];  ?></li>
+  <li class="list-group-item">Facade Commune :<?php if($etat['PartieCom']=='Choisir') echo " "; else echo $etat['PartieCom']; ?></li>
+  <li class="list-group-item">Facade Mure :<?php if($etat['PartieMure']=='Choisir') echo " "; else echo $etat['PartieMure']; ?></li>
+  <li class="list-group-item">Facade Balcon : <?php if($etat['PartieBalcon']=='Choisir') echo " "; else echo $etat['PartieBalcon']; ?></li>
+  <li class="list-group-item">Facade Terrase : <?php if($etat['FacadeTerrase']=='Choisir') echo " "; else echo $etat['FacadeTerrase']; ?></li>
+</ul>
+<ul class="list-group">
+   <li class="list-group-item">Etage Bon : <?php if ($etat['EtageB']==0) echo " "; else echo $etat['Entree']; ?></li>
+  <li class="list-group-item">Etage Moyen : <?php if  ($etat['EtageM']==0) echo " "; else echo $etat['Terras'];  ?></li>
+  <li class="list-group-item">Etage Reprise :<?php if($etat['EtageR']==0) echo " "; else echo $etat['PartieCom']; ?></li>
+  <li class="list-group-item">Etage Reparation :<?php if($etat['EtageMC']==0) echo " "; else echo $etat['PartieMure']; ?></li>
+  <li class="list-group-item">Etage IMR : <?php if($etat['EtageRepa']==0) echo " "; else echo $etat['PartieBalcon']; ?></li>
+  
+  <li class="list-group-item">Nombre Bien Bon : <?php if ($etat['NbrBienB']==0) echo " "; else echo $etat['Entree']; ?></li>
+  <li class="list-group-item">Nombre Bien Moyen : <?php if  ($etat['NbrBienM']==0) echo " "; else echo $etat['Terras'];  ?></li>
+  <li class="list-group-item">Nombre Bien Reprise :<?php if($etat['NbrBienR']==0) echo " "; else echo $etat['PartieCom']; ?></li>
+  <li class="list-group-item">Nombre Bien Reparation :<?php if($etat['NbrBienRepa']==0) echo " "; else echo $etat['PartieMure']; ?></li>
+  <li class="list-group-item">Nombre Bien IMR : <?php if($etat['NbrBienMC']==0) echo " "; else echo $etat['PartieBalcon']; ?></li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<div class="con">
+
+<b>Proprietaires - Technicien</b>
+
+<ul class="list-group">
+<?php if(empty($propregs)) echo  "   <div class='alert alert-danger' role='alert'>
+  Liste vide
+</div> ";
+
+else echo '
+<li class="list-group-item"> <div class="row">
+    
+    <div class="col-3">	
+       <b>Identite</b>
+
+</div>
+<div class="col-3">	
+<b>Nationalite</b>
+
+</div>
+<div class="col-3">	
+<b>QuotPar</b>
+
+</div>
+ 
+</div></li>'
+?>
+<h2>   </h2>
+<?php foreach($props as $prop) : ?>
+
+    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">
+<div class="row">
+    
+    <div class="col-3">	
+         <?php echo $prop['Identite'];?> 
+
+</div>
+<div class="col-3">	
+         <?php echo $prop['Nationalite'];?> 
+
+</div>
+<div class="col-3">	
+         <?php echo $prop['QuotPar'];?> 
+
+</div>
+ 
+</div>
+
+</a>
+<h2>   </h2>
+
+
+<?php endforeach ?>
+</ul>
+
 </div>
       
 <div class="col-2">

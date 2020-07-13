@@ -12,16 +12,13 @@
  
  
  
+<a href="<?php echo site_url('/missions'); ?>" class="btn btn-secondary" role="button" aria-pressed="true">Immobiliers</a>
+<a href="<?php echo site_url('/immobilier/'.$gestion['immeuble'].'/'.$immeuble['TF'])?>" class="btn btn-secondary" role="button" aria-pressed="true">Immeuble</a>
 
-
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
- 
-    <li class="breadcrumb-item"><a href="http://localhost/snittest/missions">Immobiliers</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><a href="http://localhost/snittest/immobilier/<?php echo $gestion['immeuble'].'/'.$immeuble['TF']?>" >Immeuble</a></li>
-    <li class="breadcrumb-item" aria-current="page"> Local</li>
-  </ol>
-</nav>
+<a class="btn btn-primary active"  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Local
+  </a>
+  
 <li class="list-group-item"> <div class="row">
     
     <div class="col-4">	
@@ -34,13 +31,15 @@
 
 </div>
 <div class="col-4">	
-<label>Créé : </label><b> <?php  echo "7/5/2020" ?></b>
+<label>Créé : </label><b> <?php echo $immeuble_id['Created_date']; ?></b>
 
 </div>
  
  </li>
 <div class="con">
    
+
+
 <?php echo form_open('local/updatelocal/'.$gestion['id']); ?>
 <div class="form-group">
 <div class="alert alert-primary" role="alert">
@@ -360,9 +359,6 @@ Historique Gestion de Local
  
  </form>
 
-</div>
- 
-<div class="con">
 
 <ul class="list-group">
  <?php if(empty($occups)) echo  "   <div class='alert alert-danger' role='alert'>
@@ -375,7 +371,7 @@ else echo '<li class="list-group-item"> <div class="row">
 
 </div>
  
-<div class="col-3">	
+<div class="col-2">	
 <b>Cin ou Passport</b>
 
 </div>
@@ -399,7 +395,7 @@ else echo '<li class="list-group-item"> <div class="row">
        <?php echo $occup['nomoccupant'];?> 
   
   </div>
-  <div class="col-3">	
+  <div class="col-2">	
        <?php echo $occup['cinpassport'];?> 
   
   </div>
@@ -412,14 +408,18 @@ else echo '<li class="list-group-item"> <div class="row">
     
   </div>
  
-  </div>
-  </a>
- 
   
+
+ 
+      
+  </div>
+    </a>
   <?php endforeach ?>
   </ul>
-    
-</div>
+   
+  </div>     
+ 
+
 <div class="con">
 <div class="alert alert-primary" role="alert">
 Photos du local
@@ -442,9 +442,66 @@ Photos du local
       <?php endforeach ?>  
 </div>
 </div>
+<div class="con">
+<div class="alert alert-info" role="alert">
+<b>Local Fichetechnique - Technicien</b>
+
+</div>
+<div class="row">
+<div class="col-12">
+<ul class="list-group">
+  <li class="list-group-item">N°Local :<?php   echo $fichetechnique_local['Nlocal'];  ?></li>
+  <li class="list-group-item">Nom Locataire : <?php echo $fichetechnique_local['Nomlocataire']; ?></li>
+  <li class="list-group-item">NonBatis : <?php echo $fichetechnique_local['NonBatis'] ?></li>
+  <li class="list-group-item">Batis : <?php echo $fichetechnique_local['Batis'] ?></li>
+  <li class="list-group-item">NatureLocal : <?php echo $fichetechnique_local['NatureLocal'] ?></li>
+  <li class="list-group-item">ValeurLocation :<?phpecho $fichetechnique_local['ValeurLocation']  ?></li>
+  <li class="list-group-item">Nombre des Familles Occupants :<?php echo $fichetechnique_local['NomFamilleOccupant'] ?></li>
+  <li class="list-group-item">CuisineInde : <?php if ($fichetechnique_local['CuisineInde']=='0') echo "Non"; else echo "Oui" ?></li>
+  <li class="list-group-item">SalleEau : <?php if ($fichetechnique_local['SalleEau']=='0') echo "Non"; else echo "Oui" ?></li>
+  <li class="list-group-item">EclairageN : <?php echo $fichetechnique_local['EclairageN'] ?></li>
+  <li class="list-group-item">Moyen Chauffage : <?php echo $fichetechnique_local['MoyenChauffage'] ?></li>
+  <li class="list-group-item">Ventillation : <?php echo $fichetechnique_local['Ventillation'] ?></li>
+  <li class="list-group-item">SalleEau : <?php echo $fichetechnique_local['SalleEau'] ?></li>
+  <li class="list-group-item">DistEau : <?php echo $fichetechnique_local['DistEau'] ?></li>
+  <li class="list-group-item">EvacC : <?php echo $fichetechnique_local['EvacC'] ?></li>
+  <li class="list-group-item">Usag : <?php echo $fichetechnique_local['Usag'] ?></li>
+  <li class="list-group-item">Structurelle : <?php echo $fichetechnique_local['Structurelle'] ?></li>
+  <li class="list-group-item">Electrique : <?php echo $fichetechnique_local['Electrique'] ?></li>
+  <li class="list-group-item">Plomberie : <?php echo $fichetechnique_local['Plomberie'] ?></li>
+  <li class="list-group-item">Enduit : <?php echo $fichetechnique_local['Enduit'] ?></li>
+  <li class="list-group-item">Ouvertures : <?php echo $fichetechnique_local['Ouvertures'] ?></li>
+  <li class="list-group-item">Fonctionelle : <?php echo $fichetechnique_local['Fonctionelle'] ?></li>
+  <li class="list-group-item">Spacial : <?php echo $fichetechnique_local['Spacial'] ?></li>
+  <li class="list-group-item">Peinture : <?php echo $fichetechnique_local['Peinture'] ?></li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+ 
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Précédente</a>
+    </li>
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="<?php echo site_url('/local/revente/'.$gestion['local'].'/'.$gestion['codelocal']);  ?>">2</a></li>
+    <li class="page-item">
+      <a class="page-link" >Suivante</a>
+    </li>
+  </ul>
+</nav>
+ 
  </div>
+
+ 
 <div class="col-2">
-      One of three columns
+ 
     </div>
       </div>
 

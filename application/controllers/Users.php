@@ -27,6 +27,8 @@
 			}
 		}
 
+	
+
 		// Log in user
 		public function login(){
 			$data['title'] = 'Sign In';
@@ -46,12 +48,15 @@
 				$password = md5($this->input->post('password'));
 				// Login user
 				$user_id = $this->User_model->login($username, $password);
-
+	 
 				if($user_id){
+					$data['user'] = $this->User_model->getUserById($user_id);
+					$type = $data['user']['type'];
 					// Create session
 					$user_data = array(
 						'user_id' => $user_id,
 						'username' => $username,
+						'type' => $type ,
 						'logged_in' => true
 					);
 

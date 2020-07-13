@@ -9,6 +9,9 @@
 			$this->load->view('fichetechnique/index', $data);
 		}
 
+
+	 
+
 		public function create(){
 			$this->session->set_flashdata('imm_created', 'Immobiliere ajouté');
 
@@ -70,6 +73,12 @@
 			$data['achat'] = $this->Immobiliere_model->get_achat_all($immeuble);
 			$data['gerances'] = $this->Immobiliere_model->get_gerance_all($immeuble);
 			$data['photos'] = $this->Photo_model->get_photos_immeuble_all($code_tf);
+			$data['techs'] = $this->User_model->get_techs_all();
+			$data['mission'] = $this->Missions_model->get_mission($immeuble);
+			$data['immeuble'] = $this->Immobiliere_model->get_immeuble($immeuble);
+			$data['fichetechnique'] = $this->Immobiliere_model->get_fichetechnique($immeuble);
+			$data['etat'] = $this->Immobiliere_model->get_etat($immeuble);
+			$data['props'] = $this->Immobiliere_model->get_props($immeuble);
 			
 
 			if(empty($data['gestion'])){
@@ -84,7 +93,10 @@
 		}
 
 
-		
+		public function affecter($id, $tf, $tech){
+			$this->Immobiliere_model->affecter($id,$tech);
+			redirect("immobilier/$id/$tf");
+		}
 
 		public function updategestion($im, $tf){
 		

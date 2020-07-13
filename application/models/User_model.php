@@ -29,12 +29,22 @@
 			}
 		}
 
+		public function getTypeById($id)
+		{
+			$this->db->select('type'); 
+			$this->db->from('users');   
+			$this->db->where('id', $id);
+			return $this->db->get()->result();
+		}
+
 		public function getUserById($id)
 		{
-			$query = $this->db->get_where('technicien', array('id' => $id));
+			$query = $this->db->get_where('users', array('id' => $id));
         	return $query->row_array();
 		}
 
+
+		
 		// Check username exists
 		public function check_username_exists($username){
 			$query = $this->db->get_where('users', array('username' => $username));
@@ -63,5 +73,11 @@
 
 			return $query->row_array();
 	}
+
+	public function get_techs_all()
+    {
+        $query = $this->db->get('technicien');
+        return $query->result_array();
+    }
 
 }

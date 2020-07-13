@@ -53,7 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['fichetechnique/create'] = 'fichetechnique/create';
 $route['fichetechnique/(:any)'] = 'fichetechnique/view/$1';
-$route['fichetechnique'] = 'fichetechnique/index';
+$route['fichetechnique'] = 'fichetechnique/index'; 
  
 $route['local'] = 'local/index';
 $route['missions'] = 'missions/index';
@@ -62,10 +62,17 @@ $route['local/createlocal/(:any)/(:any)'] = 'local/createlocal/$1/$2';
 $route['local/create/(:any)/(:any)'] = 'local/create/$1/$2';
 $route['local/updatelocal/(:any)'] = 'local/updatelocal/$1';
 $route['local/createoccupant'] = 'local/createoccupant';
-
+$route['local/updaterevente/(:any)'] = 'local/updaterevente/$1'; 
 $route['local/update_dependance/(:any)'] = 'local/update_dependance/$1';
+
+$route['local/create_resultat_interne/(:any)'] = 'local/create_resultat_interne/$1';
+$route['local/create_resultat_nat/(:any)'] = 'local/create_resultat_nat/$1';
+$route['local/create_commission_national/(:any)'] = 'local/create_commission_national/$1';
+$route['local/create_commission_interne/(:any)'] = 'local/create_commission_interne/$1';
 $route['local/create_dependance/(:any)'] = 'local/create_dependance/$1';
 $route['local/(:any)/(:any)'] = 'local/view/$1/$2';
+$route['local/revente/(:any)/(:any)'] = 'local/revente/$1/$2';
+$route['immobilier/affecter/(:any)'] = 'immobilier/affecter/$1';
 $route['immobilier/updateachat/(:any)'] = 'immobilier/updateachat/$1';
 $route['immobilier/updategestion/(:any)'] = 'immobilier/updategestion/$1';
 $route['immobilier/create_prop_bien/(:any)'] = 'immobilier/create_prop_bien/$1';

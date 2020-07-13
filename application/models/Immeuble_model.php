@@ -86,6 +86,7 @@ class Immeuble_model extends CI_Model {
     }
 
 
+  
 }
 
 

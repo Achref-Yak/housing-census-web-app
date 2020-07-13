@@ -6,6 +6,34 @@ class Local_model extends CI_Model {
         $this->load->database();
     }
 
+    public function get_fichetechnique($local_id = FALSE){
+  
+        $query = $this->db->get_where('local', array('Code_Local' => $local_id));
+        return $query->row_array();
+
+}
+
+    public function get_revente($local_id = FALSE){
+  
+                    $query = $this->db->get_where('revente', array('local' => $local_id));
+                    return $query->row_array();
+          
+    }
+
+    public function get_commission_cess_all($local_id = FALSE){
+  
+        $query = $this->db->get_where('commission_nationale_cession', array('local' => $local_id));
+        return $query->result_array();
+
+    }
+
+
+    public function get_commission_inter_all($local_id = FALSE){
+  
+        $query = $this->db->get_where('commission_interne_prix', array('local' => $local_id));
+        return $query->result_array();
+
+    }
 
     public function get_local_all($immeuble_id = FALSE, $limit = FALSE, $offset = FALSE){
  
@@ -178,6 +206,37 @@ class Local_model extends CI_Model {
     }
 
 
+
+    public function update_revente($id)
+    {
+         
+        $data = array(
+
+           
+            'NdossierRevente' => $this->input->post('NdossierRevente'),
+            'Ndecision' => $this->input->post('Ndecision'),
+            'DateDecision' => $this->input->post('DateDecision'),
+            'TypeVente' => $this->input->post('TypeVente'),
+            'NatureOccupant' => $this->input->post('NatureOccupant'),
+            'CodeOccupant' => $this->input->post('CodeOccupant'),
+            'NomPrenom' => $this->input->post('NomPrenom'),
+            'CIN' => $this->input->post('CIN'),
+            'PrixExpertise' => $this->input->post('PrixExpertise'),
+            'PrixSocialActualise' => $this->input->post('PrixSocialActualise'),
+            'PrixSocial' => $this->input->post('PrixSocial'),
+          
+ 
+   
+        );
+
+
+        $this->db->where('id', $id);
+
+        return $this->db->update('revente', $data);
+
+    }
+
+
     public function create_occupant()
     {
          
@@ -213,6 +272,102 @@ class Local_model extends CI_Model {
 
     }
 
+
+    public function create_commision_nationale($id)
+    {
+         
+   
+
+        $dataC = array(
+            'Objet' => $this->input->post('Objet'),
+            'NPV' => $this->input->post('NPV'),
+            'PV' => $this->input->post('PV'),
+            'Date' => $this->input->post('Date'),
+            'local' =>$id,
+
+        );
+
+        
+   
+
+        $this->db->insert('commission_interne_prix', $dataC);
+
+ 
+
+    }
+
+    public function create_commission_interne($id)
+    {
+         
+   
+
+        $dataC = array(
+            'Objet' => $this->input->post('Objet'),
+            'NPV' => $this->input->post('NPV'),
+            'PV' => $this->input->post('PV'),
+            'Date' => $this->input->post('Date'),
+            'local' =>$id,
+
+        );
+        $this->db->insert('commission_interne_prix', $dataC);
+
+
+
+
+ 
+    }
+    public function create_resultat_nat($id)
+    {
+        
+        $dataC = array(
+            'typeprix' => $this->input->post('typeprix'),
+            'NomAcq' => $this->input->post('NomAcq'),
+            'Prenom' => $this->input->post('Prenom'),
+       
+           
+        );
+
+        $this->db->where('id', $id);
+
+        return $this->db->update('resultat_commission_nationale', $dataC);
+ 
+
+    }
+
+    public function create_resultat_interne($id)
+    {
+        
+        $dataC = array(
+            'PrixDef' => $this->input->post('PrixDef'),
+            'Date' => $this->input->post('Date'),
+      
+
+        );
+ 
+        $this->db->where('id', $id);
+
+        return $this->db->update('resultat_commission_interne_prix', $dataC);
+    }
+
+    public function get_res_nat($id = FALSE){
+  
+        $query = $this->db->get_where('resultat_commission_nationale', array('local' => $id));
+        return $query->row_array();
+
+    }
+
+
+    public function get_res_inter($id = FALSE){
+  
+        $query = $this->db->get_where('resultat_commission_interne_prix', array('local' => $id));
+        return $query->row_array();
+
+    
+
+
+
+
+    }
     public function create_local()
     {
         // INSERT INTO LOCAL (TECHNIQUE)
@@ -253,9 +408,31 @@ class Local_model extends CI_Model {
         );
         $this->db->insert('localgestion', $dataG);
 
+
+
+                //INSERT INTO GESTION (LOCAL)
+        $dataR = array(
+                'local' => $insert_id,
+        );
+        $this->db->insert('revente', $dataR);
+
+        $dataR1 = array(
+            'local' => $insert_id,
+         );
+        $this->db->insert('resultat_commission_interne_prix', $dataR1);
+
+        $dataR2 = array(
+            'local' => $insert_id,
+         );
+        $this->db->insert('resultat_commission_nationale', $dataR2);
+
+
+        redirect('local/'.$insert_id.'/'.$this->input->post('codelocal'));
  
 
     }
+
+  
 
    
 }

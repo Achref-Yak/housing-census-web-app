@@ -6,6 +6,81 @@ class Immobiliere_model extends CI_Model {
         $this->load->database();
     }
 
+    public function affecter($id, $tech)
+    {
+        $data = array(
+            'Tech' => $tech,
+   
+        );
+
+        $this->db->where('Immeuble_id', $id);
+        return $this->db->update('mission', $data);
+    }
+    public function get_fichetechnique($immeuble_id = FALSE, $limit = FALSE, $offset = FALSE){
+ 
+        /*
+                    $this->db
+                    ->select('gestion.*')
+                    ->from('gestion')
+                    ->join('gestion','gestion.immeuble = immeuble.id')
+                    ->where('gestion', array('immeuble' => $immeuble_id));
+                    $query = $this->db->get(); */
+        
+        
+                    $query = $this->db->get_where('fichetechnique', array('Immeuble_id' => $immeuble_id));
+                    return $query->row_array();
+          
+            }
+
+            
+            public function get_props($immeuble_id = FALSE, $limit = FALSE, $offset = FALSE){
+ 
+                /*
+                            $this->db
+                            ->select('gestion.*')
+                            ->from('gestion')
+                            ->join('gestion','gestion.immeuble = immeuble.id')
+                            ->where('gestion', array('immeuble' => $immeuble_id));
+                            $query = $this->db->get(); */
+                
+                
+                            $query = $this->db->get_where('proprietaire', array('Immeuble_id' => $immeuble_id));
+                            return $query->result_array();
+                  
+                    }
+
+
+            public function get_etat($immeuble_id = FALSE, $limit = FALSE, $offset = FALSE){
+ 
+                /*
+                            $this->db
+                            ->select('gestion.*')
+                            ->from('gestion')
+                            ->join('gestion','gestion.immeuble = immeuble.id')
+                            ->where('gestion', array('immeuble' => $immeuble_id));
+                            $query = $this->db->get(); */
+                
+                
+                            $query = $this->db->get_where('etat', array('Immeuble_id' => $immeuble_id));
+                            return $query->row_array();
+                  
+                    }
+
+    public function get_immeuble($immeuble_id = FALSE, $limit = FALSE, $offset = FALSE){
+ 
+        /*
+                    $this->db
+                    ->select('gestion.*')
+                    ->from('gestion')
+                    ->join('gestion','gestion.immeuble = immeuble.id')
+                    ->where('gestion', array('immeuble' => $immeuble_id));
+                    $query = $this->db->get(); */
+        
+        
+                    $query = $this->db->get_where('immeuble', array('id' => $immeuble_id));
+                    return $query->row_array();
+          
+            }
 
     public function get_gestion_all($immeuble_id = FALSE, $limit = FALSE, $offset = FALSE){
  
@@ -72,11 +147,15 @@ class Immobiliere_model extends CI_Model {
 
  
 
-        return $this->db->update('gestion', $data);
+        $this->db->update('gestion', $data);
 
 
+        $dataF = array(
+        'AdresseAdmin' => $this->input->post('AdresseFR'),
+        );
 
-
+        $this->db->where('Immeuble_id', $this->input->post('immeuble'));
+        return $this->db->update('fichetechnique', $dataF);
  
 
     }

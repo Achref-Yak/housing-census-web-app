@@ -5,6 +5,15 @@ class Missions_model extends CI_Model {
     {
         $this->load->database();
     }
+
+    public function get_mission($immeuble_id = FALSE){
+  
+        $query = $this->db->get_where('mission', array('Immeuble_id' => $immeuble_id));
+        return $query->row_array();
+
+   
+}
+
     public function get_missions_affecte_all($immeuble_id = FALSE, $limit = FALSE, $offset = FALSE){
   
             $this->db
@@ -26,7 +35,8 @@ class Missions_model extends CI_Model {
         ->select('mission.*, immeuble.*, fichetechnique.*')
         ->from('mission')
         ->join('immeuble','immeuble.id = mission.Immeuble_id')
-        ->join('fichetechnique','fichetechnique.Immeuble_id = immeuble.id');
+        ->join('fichetechnique','fichetechnique.Immeuble_id = immeuble.id')
+        ->where('Tech', null);
         $query = $this->db->get(); 
         return $query->result_array();
     }

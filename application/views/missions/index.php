@@ -1,15 +1,6 @@
 
-    <div class="col-8 marginspace"  style="margin-top:100px">
-	<nav aria-label="breadcrumb" >
-  <ol class="breadcrumb" >
+    <div class="col-8 marginspace"  style="margin-top:10px">
  
-    <li class="breadcrumb-item"><a href="http://localhost/snittest/missions">Immobiliers</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Immeuble</li>
-    <li class="breadcrumb-item active" aria-current="page"> 
-    Local
-   </li>
-  </ol>
-</nav>
 
 
 <div class="con">
