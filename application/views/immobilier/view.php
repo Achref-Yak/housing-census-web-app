@@ -797,7 +797,7 @@ else echo '
 <b>Proprietaires - Technicien</b>
 
 <ul class="list-group">
-<?php if(empty($propregs)) echo  "   <div class='alert alert-danger' role='alert'>
+<?php if(empty($props)) echo  "   <div class='alert alert-danger' role='alert'>
   Liste vide
 </div> ";
 

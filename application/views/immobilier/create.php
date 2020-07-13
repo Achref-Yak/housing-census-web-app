@@ -149,13 +149,13 @@
 <div class="col-3">
 <div class="form-group">
 <label>Date Signature SNIF</label>
-<input type="text" class="form-control" name="dateSignSnif" placeholder="Date Signature SNIF">
+<input type="date" class="form-control" name="dateSignSnif" placeholder="Date Signature SNIF">
 </div>
 </div>
 <div class="col-3">
 <div class="form-group">
 <label>Date Transfer Proprieté</label>
-<input type="text" class="form-control" name="dateTransferProp" placeholder="Date Transfer Proprieté">
+<input type="date" class="form-control" name="dateTransferProp" placeholder="Date Transfer Proprieté">
 </div>
 </div>
 <div class="col-3">
@@ -167,7 +167,7 @@
 <div class="col-3">
 <div class="form-group">
 <label>Date Transfer Etat</label>
-<input type="text" class="form-control" name="DateTransEtat" placeholder="Date Transfer Etat">
+<input type="date" class="form-control" name="DateTransEtat" placeholder="Date Transfer Etat">
 </div>
 </div>
 
