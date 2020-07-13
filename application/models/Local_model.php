@@ -404,6 +404,10 @@ class Local_model extends CI_Model {
             'surface' => $this->input->post('surface'),
             'usag' => $this->input->post('usag'),
             'local' =>  $insert_id,
+            'usag' => $this->input->post('usag'),
+            'local' =>  $insert_id,
+            'usag' => $this->input->post('usag'),
+            'local' =>  $insert_id,
             'immeuble' => $this->input->post('immeuble')
         );
         $this->db->insert('localgestion', $dataG);

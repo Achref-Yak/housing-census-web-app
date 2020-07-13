@@ -74,7 +74,7 @@
 			$data['gerances'] = $this->Immobiliere_model->get_gerance_all($immeuble);
 			$data['photos'] = $this->Photo_model->get_photos_immeuble_all($code_tf);
 			$data['techs'] = $this->User_model->get_techs_all();
-			$data['mission'] = $this->Missions_model->get_mission($immeuble);
+			$data['missionI'] = $this->Missions_model->get_mission($immeuble);
 			$data['immeuble'] = $this->Immobiliere_model->get_immeuble($immeuble);
 			$data['fichetechnique'] = $this->Immobiliere_model->get_fichetechnique($immeuble);
 			$data['etat'] = $this->Immobiliere_model->get_etat($immeuble);

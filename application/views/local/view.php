@@ -455,7 +455,7 @@ Photos du local
   <li class="list-group-item">NonBatis : <?php echo $fichetechnique_local['NonBatis'] ?></li>
   <li class="list-group-item">Batis : <?php echo $fichetechnique_local['Batis'] ?></li>
   <li class="list-group-item">NatureLocal : <?php echo $fichetechnique_local['NatureLocal'] ?></li>
-  <li class="list-group-item">ValeurLocation :<?phpecho $fichetechnique_local['ValeurLocation']  ?></li>
+  <li class="list-group-item">ValeurLocation :<?php echo $fichetechnique_local['ValeurLocation']  ?></li>
   <li class="list-group-item">Nombre des Familles Occupants :<?php echo $fichetechnique_local['NomFamilleOccupant'] ?></li>
   <li class="list-group-item">CuisineInde : <?php if ($fichetechnique_local['CuisineInde']=='0') echo "Non"; else echo "Oui" ?></li>
   <li class="list-group-item">SalleEau : <?php if ($fichetechnique_local['SalleEau']=='0') echo "Non"; else echo "Oui" ?></li>

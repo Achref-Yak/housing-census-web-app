@@ -4,14 +4,29 @@
 
 
 <div class="con">
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-info" role="alert">
 Immobiliers  Non Affectée
 </div>
  
-<div class="row">
+<div class="row" >
 
 </div>
+<div class="row" style='margin-bottom:20px'>
 
+<div class="col-4">	
+    Titre Foncier
+
+</div>
+<div class="col-4">	
+     Adresse
+
+</div>
+<div class="col-4">	
+    Créé
+
+</div>
+ 
+</div>
 <?php foreach($missionsNf as $immeuble) : ?>
 
 <a href="<?php echo site_url('/immobilier/'.$immeuble['Immeuble_id'].'/'.$immeuble['Code_TF']); ?>" class="list-group-item list-group-item-action list-group-item-primary">
@@ -26,7 +41,7 @@ Immobiliers  Non Affectée
 
 </div>
 <div class="col-4">	
-     <?php echo $immeuble['Adresse'];?> 
+<?php echo $immeuble['Created_date'];?> 
 
 </div>
  
@@ -42,11 +57,11 @@ Immobiliers  Non Affectée
 
 
 <div class="con">
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-info" role="alert">
 Immobiliers  Affectées
 </div>
 
-<div class="row">
+<div class="row" style='margin-bottom:20px'>
 
 <div class="col-4">	
     Titre Foncier
@@ -56,8 +71,12 @@ Immobiliers  Affectées
      Adresse
 
 </div>
-<div class="col-4">	
+<div class="col-2">	
     Technicien
+
+</div>
+<div class="col-2">	
+    Créé
 
 </div>
  
@@ -76,8 +95,13 @@ Immobiliers  Affectées
      <?php echo $mission['Adresse'];?> 
 
 </div>
-<div class="col-4">	
+<div class="col-2">	
      <?php echo $mission['Nom'];?> 
+
+</div>
+
+<div class="col-2">	
+     <?php echo $mission['Created_date'];?> 
 
 </div>
  

@@ -10,6 +10,7 @@ class Immobiliere_model extends CI_Model {
     {
         $data = array(
             'Tech' => $tech,
+            'Etat' => 1,
    
         );
 
@@ -246,6 +247,12 @@ class Immobiliere_model extends CI_Model {
         );
         $this->db->insert('achat', $dataA);
 
+        $dataDe = array(
+            'Immeuble_id' => $insert_id,
+   
+        );
+        $this->db->insert('descg', $dataDe);
+
         $dataF = array(
             'Code_TF' => $this->input->post('TF'),
             'Adresse' => $this->input->post('AdresseFR'),
@@ -255,7 +262,7 @@ class Immobiliere_model extends CI_Model {
             'NumImmeuble' => '0',
             'CodeMunicipal' => '',
             'Immeuble_id' => $insert_id,
-            'GPS' => '',
+            
             'DateCons' => $this->input->post('AnneConst'),
             'AdresseAdmin' => $this->input->post('AdresseFR'),
         );
@@ -269,6 +276,13 @@ class Immobiliere_model extends CI_Model {
  
         );
         $this->db->insert('mission', $dataM);
+
+        $dataM = array(
+
+            'Immeuble_id' => $insert_id,
+ 
+        );
+        $this->db->insert('etat', $dataM);
 
 
         redirect('immobilier/'.$insert_id.'/'.$this->input->post('TF'));

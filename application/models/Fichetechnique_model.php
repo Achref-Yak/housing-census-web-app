@@ -59,7 +59,7 @@ class Fichetechnique_model extends CI_Model {
             'CodeMunicipal' => $this->input->post('CodeMunicipal'),
             'Etat' => $this->input->post('Etat'),
             'Immeuble_id' => $this->input->post('Immeuble_id'),
-            'GPS' => $this->input->post('GPS'),
+
             'DateAq' => $this->input->post('DateAq'),
             'DateTrans' => $this->input->post('DateTrans'),
             'DateCons' => $this->input->post('DateCons'),
@@ -86,7 +86,7 @@ class Fichetechnique_model extends CI_Model {
             'NumImmeuble' => '0',
             'CodeMunicipal' => '',
             'Immeuble_id' => $Immeuble_id,
-            'GPS' => '',
+    
             'DateCons' => $this->input->post('AnneConst'),
             'AdresseAdmin' => $this->input->post('Adresse'),
         );

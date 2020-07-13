@@ -69,7 +69,7 @@
  
 
   <?php $var = $this->session->userdata; 
-    if($var['type']==1 && $mission['Tech']==null)
+    if($var['type']==1 && $missionI['Tech']==null)
     {
       echo ' <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
       echo '    Affecter A
@@ -80,15 +80,15 @@
  
       endforeach;
       echo '  </div>';
-    } else if($var['type']==1 && $mission['Tech']!=null)
+    } else if($var['type']==1 && $missionI['Tech']!=null)
     {
       echo '<b>Affecté</b>';
     }
-    else if($var['type']==0 && $mission['Tech']!=null)
+    else if($var['type']==0 && $missionI['Tech']!=null)
     {
       echo '<b>Affecté</b>';
     }
-    else if($var['type']==0 && $mission['Tech']==null)
+    else if($var['type']==0 && $missionI['Tech']==null)
     {
       echo '<b>Non Affecté</b>';
     }
@@ -774,17 +774,17 @@ else echo '
   <li class="list-group-item">Facade Terrase : <?php if($etat['FacadeTerrase']=='Choisir') echo " "; else echo $etat['FacadeTerrase']; ?></li>
 </ul>
 <ul class="list-group">
-   <li class="list-group-item">Etage Bon : <?php if ($etat['EtageB']==0) echo " "; else echo $etat['Entree']; ?></li>
-  <li class="list-group-item">Etage Moyen : <?php if  ($etat['EtageM']==0) echo " "; else echo $etat['Terras'];  ?></li>
-  <li class="list-group-item">Etage Reprise :<?php if($etat['EtageR']==0) echo " "; else echo $etat['PartieCom']; ?></li>
-  <li class="list-group-item">Etage Reparation :<?php if($etat['EtageMC']==0) echo " "; else echo $etat['PartieMure']; ?></li>
-  <li class="list-group-item">Etage IMR : <?php if($etat['EtageRepa']==0) echo " "; else echo $etat['PartieBalcon']; ?></li>
+   <li class="list-group-item">Etage Bon : <?php if ($etat['EtageB']==0) echo " "; else echo $etat['EtageB']; ?></li>
+  <li class="list-group-item">Etage Moyen : <?php if  ($etat['EtageM']==0) echo " "; else echo $etat['EtageM'];  ?></li>
+  <li class="list-group-item">Etage Reprise :<?php if($etat['EtageR']==0) echo " "; else echo $etat['EtageR']; ?></li>
+  <li class="list-group-item">Etage Reparation :<?php if($etat['EtageMC']==0) echo " "; else echo $etat['EtageMC']; ?></li>
+  <li class="list-group-item">Etage IMR : <?php if($etat['EtageRepa']==0) echo " "; else echo $etat['EtageRepa']; ?></li>
   
-  <li class="list-group-item">Nombre Bien Bon : <?php if ($etat['NbrBienB']==0) echo " "; else echo $etat['Entree']; ?></li>
-  <li class="list-group-item">Nombre Bien Moyen : <?php if  ($etat['NbrBienM']==0) echo " "; else echo $etat['Terras'];  ?></li>
-  <li class="list-group-item">Nombre Bien Reprise :<?php if($etat['NbrBienR']==0) echo " "; else echo $etat['PartieCom']; ?></li>
-  <li class="list-group-item">Nombre Bien Reparation :<?php if($etat['NbrBienRepa']==0) echo " "; else echo $etat['PartieMure']; ?></li>
-  <li class="list-group-item">Nombre Bien IMR : <?php if($etat['NbrBienMC']==0) echo " "; else echo $etat['PartieBalcon']; ?></li>
+  <li class="list-group-item">Nombre Bien Bon : <?php if ($etat['NbrBienB']==0) echo " "; else echo $etat['NbrBienB']; ?></li>
+  <li class="list-group-item">Nombre Bien Moyen : <?php if  ($etat['NbrBienM']==0) echo " "; else echo $etat['NbrBienM'];  ?></li>
+  <li class="list-group-item">Nombre Bien Reprise :<?php if($etat['NbrBienR']==0) echo " "; else echo $etat['NbrBienR']; ?></li>
+  <li class="list-group-item">Nombre Bien Reparation :<?php if($etat['NbrBienRepa']==0) echo " "; else echo $etat['NbrBienRepa']; ?></li>
+  <li class="list-group-item">Nombre Bien IMR : <?php if($etat['NbrBienMC']==0) echo " "; else echo $etat['NbrBienMC']; ?></li>
 </ul>
 </div>
 
