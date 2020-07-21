@@ -20,7 +20,7 @@ Entities\Mission:
             name: Immeuble_id
             referencedColumnName: id
             onDelete: CASCADE
-  oneToMany:
+  oneToOne:
     Tech:
       targetEntity: Technicien
       joinColumn:

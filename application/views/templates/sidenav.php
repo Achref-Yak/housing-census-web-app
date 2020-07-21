@@ -4,6 +4,7 @@
     <div class="col-2">
     
     <div id="mySidenav" class="sidenav">
+      
     <a class="nav-link active " href="<?php echo base_url(); ?>missions"><img src="<?php echo base_url(); ?>/assets/logo.png"></a>
     <a class="nav-link active " href="<?php echo base_url(); ?>missions">Dashboard</a>
 

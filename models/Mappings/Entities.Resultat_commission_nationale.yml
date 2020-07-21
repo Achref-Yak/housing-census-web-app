@@ -1,0 +1,29 @@
+Entities\resultat_commission_nationale:
+  type: entity
+  table: resultat_commission_nationale
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    typeprix :
+      type: decimal
+      precision: 12
+      scale: 3
+    NomAcq :
+      type : string 
+      nullable : true 
+    Prenom :
+      type : string 
+      nullable : true      
+       
+
+  oneToOne:
+    Local:
+      targetEntity: Local
+      joinColumn:
+            name: local
+            referencedColumnName: id
+            onDelete: CASCADE
+ 

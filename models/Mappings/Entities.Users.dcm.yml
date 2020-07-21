@@ -1,36 +1,37 @@
-Entities\Technicien:
+Entities\Users:
   type: entity
-  table: Technicien
+  table: Users
   id:
     id:
       type: integer
       generator:
         strategy: AUTO
   fields:
-    UserName:
+    name:
       type: string
       length: 255
       nullable: false
-    Password:
+    zipcode:
       type: string
       length: 255
       nullable : false
-    Nom:
+    email:
       type: string
       length: 255
       nullable: true
-    Prenom :
+    username :
       type: string
       length: 255
       nullable: true
-    Email :
+    password :
       type: string
       length: 255
       nullable: true
-    JoinedDate:
+    register_date:
       Type: date
       nullable: true
-    LastConnectDate:
-      Type: date 
-      nullable: true
+    type:
+      Type: integer 
+      length: 2
+      nullable: false
  

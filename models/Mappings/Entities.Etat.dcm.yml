@@ -9,67 +9,87 @@ Entities\Etat:
   fields:
     Entree :
       type: integer
+      length: 255
       nullable: true
     FacadeTerrase :
       type: string
+      length: 255
       nullable: true
     PartieCom :
       type: string
+      length: 255
       nullable: true
     PartieMure:
       type: string
+      length: 255
       nullable: true
     PartieBalcon:
       type: string
+      length: 255
       nullable: true
     Terras:
       type: string
+      length: 255
       nullable: true
     Platon:
       type: string
+      length: 255
       nullable: true
     Evacuation:
       type: string
+      length: 255
       nullable: true
     Electrique:
       type: string
+      length: 255
       nullable: true
     Gaz:
       type: string
+      length: 255
       nullable: true
     Eau:
       type: string
+      length: 255
       nullable: true
     EtageB:
       type: integer
+      length: 11
       nullable: true
     EtageM:
       type: integer
+      length: 11
       nullable: true
     EtageR:
       type: integer
+      length: 11
       nullable: true
     EtageMC:
       type: integer
+      length: 11
       nullable: true
     NbrBienB:
       type: integer
+      length: 11
       nullable: true
     NbrBienM:
       type: integer
       nullable: true
     NbrBienR:
       type: integer
+      length: 11
       nullable: true
     NbrBienMC:
       type: integer
+      length: 11
       nullable: true
     EtageRepa:
       type: integer
-      nullable: true 
+      length: 11
+      nullable: true
     NbrBienRepa:
       type: integer
-      nullable: true        
+      length: 11
+      nullable: true   
   oneToOne:
     Immeuble:
       targetEntity: Immeuble

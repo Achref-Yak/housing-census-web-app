@@ -1,0 +1,58 @@
+Entities\Achat:
+  type: entity
+  table: achat
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    NdossierRevente :
+      type : integer 
+      length: 12
+      nullable : true
+    DateDecision :
+      type : date 
+      nullable : true
+    TypeVente :
+      type : decimal 
+      precision: 12
+      scale: 3
+      nullable : true
+    NatureOccupant:
+      type : date
+      nullable : true
+    CodeOccupant :
+      type: date
+      nullable : true
+    NomPrenom :
+      type : string 
+      length: 255
+      nullable : true
+    CIN :
+      type: integer
+      length: 12
+      nullable : true
+    PrixExpertise :
+      type : decimal 
+      precision: 12
+      scale: 3
+      nullable : true
+    PrixSocial :
+      type : decimal 
+      precision: 12
+      scale: 3
+      nullable : true
+    PrixSocialActualise :
+      type : decimal 
+      precision: 12
+      scale: 3
+      nullable : true
+  oneToOne:
+    Local:
+      targetEntity: Local
+      joinColumn:
+            name: local
+            referencedColumnName: id
+            onDelete: CASCADE
+ 

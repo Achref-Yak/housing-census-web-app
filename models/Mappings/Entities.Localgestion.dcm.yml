@@ -1,40 +1,33 @@
-Entities\Achat:
+Entities\Localgestion:
   type: entity
-  table: achat
+  table: localgestion
   id:
     id:
       type: integer
       generator:
         strategy: AUTO
   fields:
-    devise :
-      type : decimal 
-      precision: 12
-      scale: 3
-      nullable : true
-    prixAchat :
-      type : decimal 
-      precision: 12
-      scale: 3
-      nullable : true
-    tauxDeChange :
-      type : decimal 
-      precision: 12
-      scale: 3
-      nullable : true
-    dateSignSnif:
-      type : date
-      nullable : true
-    dateTransferProp :
-      type: date
-      nullable : true
-    QuoteParteEtat :
+    netage :
       type : string 
       length: 255
       nullable : true
-    DateTransEtat :
+    codelocal :
+      type : string 
+      length: 255
+      nullable : true
+    disponibilite :
+      type : string 
+      length: 255
+      nullable : true
+    naturelocal :
+      type : string 
+      length: 255
+      nullable : true
+    datecreation :
       type: date
       nullable : true
+ 
+
   oneToOne:
     Immeuble:
       targetEntity: Immeuble

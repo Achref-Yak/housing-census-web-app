@@ -1,0 +1,92 @@
+Entities\Occupant:
+  type: entity
+  table: Occupant
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  
+
+  fields:
+    nomoccupant :
+      type: string
+      length: 255
+      nullable: true
+    cinpassport :
+      type: integer
+      length: 20
+      nullable: true
+    lieumission :
+      type : string 
+      length: 255
+      nullable : true
+    dateemission :
+      type: date
+      nullable: true
+    typeoccupant :
+      type : string 
+      length: 255
+      nullable : true
+    codeeoccupant :
+      type : string 
+      length: 255
+      nullable : true
+    contradatedebut :
+      type: date
+      nullable: true
+    contradatefin :
+      type: date
+      nullable: true
+    periodecorresdu :
+      type: date
+      nullable: true
+    periodecorrespau :
+      type: date
+      nullable: true
+    naturepiececon :
+      type : string 
+      length: 255
+      nullable : true
+    montantloyerencaisse :
+      type : decimal 
+      precision: 12
+      scale: 3
+      nullable : true
+    loyerdedepart :
+      type : decimal 
+      precision: 12
+      scale: 3
+      nullable : true
+    loyeractuel :
+      type : decimal 
+      precision: 12
+      scale: 3
+      nullable : true
+    fraisocc :
+      type: int
+      nullable: true
+    fraisrecu :
+      type : decimal 
+      precision: 12
+      scale: 3
+      nullable : true
+    tauxact :
+      type : decimal 
+      precision: 12
+      scale: 3
+      nullable : true
+  oneToOne:
+    Immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+            name: immeuble
+            referencedColumnName: id
+            onDelete: CASCADE
+  oneToOne:
+    Local:
+      targetEntity: Local
+      joinColumn:
+            name: local
+            referencedColumnName: id
+            onDelete: CASCADE

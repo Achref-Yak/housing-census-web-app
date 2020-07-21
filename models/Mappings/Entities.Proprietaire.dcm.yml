@@ -1,6 +1,6 @@
 Entities\Proprietaire:
   type: entity
-  table: Proprietaire
+  table: proprietaire
   id:
     id:
       type: integer

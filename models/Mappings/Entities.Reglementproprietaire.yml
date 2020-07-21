@@ -1,0 +1,29 @@
+Entities\Reglementproprietaire:
+  type: entity
+  table: reglementproprietaire
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    proprietaire :
+      type : string 
+      nullable : true
+    du :
+      type : integer 
+      nullable : true 
+    au :
+      type : date 
+      nullable : true
+    mentantReglement:
+      type : date 
+   
+  oneToOne:
+    immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+            name: immeuble
+            referencedColumnName: id
+            onDelete: CASCADE
+ 

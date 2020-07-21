@@ -7,76 +7,63 @@ Entities\Gestion:
       generator:
         strategy: AUTO
   fields:
-    NTF :
+    TF :
       type : string 
-      nullable : true
-    CodeImmeuble :
-      type: string
-      nullable: true
-    CodeImmeuble :
-      type: string
       nullable : true
     TypeTF :
       type : string
       nullable : true
-    NatureImmeuble :
+    NatureConst :
       type : string
       nullable : true
-    NatureTF :
+    ContenanceTF :
       type : string
       nullable : true
-    DateConstruction :
-      type : date
-      nullable : true
-    NombreEtages :
-      type : integer
-      nullable : true  
-    NombreLocaux :
-      type : integer
-      nullable : true  
-    Adresse :
+    AnneConst :
       type : string
       nullable : true
-    AdresseAr :
+    AdresseFR :
       type : string
-      nullable : true     
-    Localite :
+      nullable : true
+    AdresseAR	 :
       type : string
-      nullable : true    
-    Gouvernorat :
-      type : string
-      nullable : true 
+      nullable : true
     Zone :
       type : string
-      nullable : true   
+      nullable : true
+    Localite :
+      type : string
+      nullable : true
+    Governorat :
+      type : string
+      nullable : true
     CodePostal :
       type : string
-      nullable : true   
-    EtapeGestionTitre :
-      type : string
-      nullable : true   
+      nullable : true
     Bureau :
       type : string
-      nullable : true 
+      nullable : true
+    EtapeGestionTitre :
+      type : string
+      nullable : true
+    PlanConst :
+      type : string
+      nullable : true
+    NombreEtage :
+      type : string
+      nullable : true
+    NombreLocaux :
+      type : integer
+      nullable : true
+    CodeImmeubilier :
+      type : string
+      nullable : true   
 
   oneToOne:
     Immeuble:
       targetEntity: Immeuble
       joinColumn:
-            name: Immeuble_id
+            name: immeuble
             referencedColumnName: id
             onDelete: CASCADE
-  oneToOne:
-    AnnulGerance:
-      targetEntity: AnnulGerance
-      joinColumn:
-            name: AnnulGerance_id
-            referencedColumnName: id
-            onDelete: CASCADE
-  oneToOne:
-    DecGer:
-      targetEntity: DecGer
-      joinColumn:
-            name: DecGer_id
-            referencedColumnName: id
-            onDelete: CASCADE
+ 

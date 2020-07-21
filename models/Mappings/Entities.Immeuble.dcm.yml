@@ -1,6 +1,6 @@
 Entities\Immeuble:
   type: entity
-  table: Immeuble
+  table: immeuble
   id:
     id:
       type: integer

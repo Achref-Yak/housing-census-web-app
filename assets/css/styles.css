@@ -154,7 +154,6 @@ label{
 
 .wrapper {
   display: flex;
-  align-items: center;
   flex-direction: column; 
   justify-content: center;
   width: 100%;
@@ -401,8 +400,7 @@ input[type=password]:placeholder {
   width: 100%;
 }
 
-
-
+ 
 /* OTHERS */
 
 *:focus {
@@ -416,4 +414,19 @@ input[type=password]:placeholder {
 
 .logo{
   margin: 100px;
+}
+
+.bghome {
+  background-image: url("../../assets/home.jpg");
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 100%; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+ 
+}
+
+.it{
+  justify-content: center;
+ 
 }

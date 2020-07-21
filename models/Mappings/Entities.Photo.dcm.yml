@@ -8,15 +8,19 @@ Entities\Photo:
         strategy: AUTO
   fields:
     Title :
-      type : string 
+      type : string
+      length: 255 
       nullable : true
     URL :
       type: string
+      length: 255
       nullable: true
     Code_TF :
       type : string 
+      length: 255
       nullable : true
     Code_Local :
-      type : string 
+      type : string
+      length: 255 
       nullable : true
  

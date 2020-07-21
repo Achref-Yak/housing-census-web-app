@@ -43,7 +43,7 @@
    
 <?php echo form_open('local/updaterevente/'.$revente['id']); ?>
 <div class="form-group">
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-info" role="alert">
 Dossier Revente
 </div>
  
@@ -136,7 +136,7 @@ Dossier Revente
  
  <?php echo form_open('local/create_commission_national/'.$gestion['local']); ?>
 <div class="form-group">
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-info" role="alert">
 Commision Nationale De Cession
 </div>
  
@@ -239,7 +239,7 @@ else echo '<li class="list-group-item"> <div class="row" >
 
  <?php echo form_open('local/create_resultat_nat/'.$res_nat['id']); ?>
 <div class="form-group">
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-info" role="alert">
 Resultat de Commission Nationale De Cession
 </div>
  
@@ -296,7 +296,7 @@ Resultat de Commission Nationale De Cession
  
  <?php echo form_open('local/create_commission_interne/'.$gestion['local']); ?>
 <div class="form-group">
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-info" role="alert">
 Commision Interne de Prix
 </div>
  
@@ -403,7 +403,7 @@ else echo '<li class="list-group-item"> <div class="row" >
  
  <?php echo form_open('local/create_resultat_interne/'.$res_inter['id']); ?>
 <div class="form-group">
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-info" role="alert">
 Resultat De Commission Interne De Prix
 </div>
  

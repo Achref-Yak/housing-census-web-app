@@ -1,0 +1,38 @@
+Entities\Proprietairebienimmobilier:
+  type: entity
+  table: proprietairebienimmobilier
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    proprietaire :
+      type : string 
+      length: 255
+      nullable : true
+    nationalite :
+      type : string 
+      length: 255
+      nullable : true 
+    quotepart :
+      type : string
+      length: 255 
+      nullable : true
+    adresse:
+      type : string
+      length: 255 
+      nullable : true
+    rip :
+      type : string 
+      length: 255
+      nullable : true      
+
+  oneToOne:
+    Immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+            name: immeuble
+            referencedColumnName: id
+            onDelete: CASCADE
+ 

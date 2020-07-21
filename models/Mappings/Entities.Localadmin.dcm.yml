@@ -1,21 +1,26 @@
-Entities\DescG:
+Entities\Localadmin:
   type: entity
-  table: DescG
+  table: localadmin
   id:
     id:
       type: integer
       generator:
         strategy: AUTO
-  
+  fields:
+    codelocal :
+      type : string 
+      length: 255
+      nullable : true
+    datecreation :
+      type: date
+      nullable : true
+ 
+
   oneToOne:
     Immeuble:
       targetEntity: Immeuble
       joinColumn:
-            name: Immeuble_id
+            name: immeuble
             referencedColumnName: id
             onDelete: CASCADE
-  fields:
-    descG :
-      type: integer
-      nullable: true
-
+ 
