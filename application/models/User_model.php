@@ -3,12 +3,26 @@
 		public function register($enc_password){
 			// User data array
 			$data = array(
-				'name' => $this->input->post('name'),
+				'nom' => $this->input->post('nom'),
+				'prenom' => $this->input->post('prenom'),
 				'email' => $this->input->post('email'),
                 'username' => $this->input->post('username'),
                 'password' => $enc_password,
-                'zipcode' => $this->input->post('zipcode')
+                'type' => $this->input->post('type')
 			);
+
+			if( $this->input->post('type')=='tech')
+			{
+				$data = array(
+					'UserName' => $this->input->post('username'),
+					'Password' =>  $enc_password,
+					'nom' => $this->input->post('nom'),
+					'prenom' => $this->input->post('prenom'),
+					'email' => $this->input->post('email'),
+					 
+				);
+				return $this->db->insert('technicien', $data);
+			}
 
 			// Insert user
 			return $this->db->insert('users', $data);

@@ -11,6 +11,10 @@ Entities\Achat:
       type : integer 
       length: 12
       nullable : true
+    Ndecision :
+      type : integer 
+      length: 12
+      nullable : true
     DateDecision :
       type : date 
       nullable : true

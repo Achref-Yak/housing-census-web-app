@@ -1,0 +1,38 @@
+Entities\Garence:
+  type: entity
+  table: Garence
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    decisionGer :
+      type: integer
+      length: 11
+      nullable: true
+    dateDec :
+      type: date
+      length: 255
+      nullable: true
+    dateAnnul :
+      type: date
+      nullable: true
+    achat:
+      type: integer
+      length: 11
+      nullable: true
+  
+  oneToOne:
+    Immeuble:
+      targetEntity: Immeuble
+      joinColumn:
+            name: Immeuble_id
+            referencedColumnName: id
+            onDelete: CASCADE
+    
+
+
+
+
+ 

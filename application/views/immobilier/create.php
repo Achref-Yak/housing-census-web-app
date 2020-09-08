@@ -1,12 +1,18 @@
  
 
-<?php echo validation_errors(); ?>
 
  
      
     <div class="col-8 marginspace" style="margin-top:10px">
  
+
     <div class="con">
+    <div class="alert alert-light" role="alert">
+    <?php echo validation_errors(); ?>
+  </div>
+    <div class="alert alert-light" role="alert">
+    <b>Ajouter Immeuble</b>
+  </div>
     <div class="alert alert-primary" role="alert">
     Gestion
 </div>
@@ -27,7 +33,13 @@
 <div class="col-3">
 <div class="form-group">
 <label>Nature Construction</label>
-<input type="text" class="form-control" name="NatureConst" placeholder="Nature Construction" >
+<select class="form-control" id="sel1" name="NatureConst">
+                       
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                      </select>
+ 
 </div>
 </div>
 <div class="col-3">
@@ -81,7 +93,12 @@
 <div class="col-3">
 <div class="form-group">
 <label>PlanConst</label>
-<input type="text" class="form-control" name="PlanConst" placeholder="PlanConst">
+<select class="form-control" id="sel1" name="PlanConst">
+                              <option value=""></option>
+                              <option value="oui">Oui</option>
+                              <option value="non">Non</option>
+                      </select>
+ 
 </div>
 </div>
 <div class="col-3">

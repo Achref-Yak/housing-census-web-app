@@ -450,10 +450,18 @@ Photos du local
 <div class="row">
 <div class="col-12">
 <ul class="list-group">
-  <li class="list-group-item">N°Local :<?php   echo $fichetechnique_local['Nlocal'];  ?></li>
+<li class="list-group-item">N°Local :<?php   echo $fichetechnique_local['Nlocal'];  ?></li>
   <li class="list-group-item">Nom Locataire : <?php echo $fichetechnique_local['Nomlocataire']; ?></li>
-  <li class="list-group-item">NonBatis : <?php echo $fichetechnique_local['NonBatis'] ?></li>
-  <li class="list-group-item">Batis : <?php echo $fichetechnique_local['Batis'] ?></li>
+  <li class="list-group-item">LT :<?php  if ($fichetechnique_local['LT']=='1') echo "LT"; else if ($fichetechnique_local['LT']=='2') echo "LO"; else if ($fichetechnique_local['LT']=='3') echo "AD"; else echo "" ?>  </li>
+  <li class="list-group-item">LV :<?php  if ($fichetechnique_local['LV']=='1') echo "LV"; else if ($fichetechnique_local['LV']=='2') echo "LO"; else if ($fichetechnique_local['LV']=='3') echo "OS";  else echo "" ?> </li>
+  <li class="list-group-item">NonBatis :  <?php if($fichetechnique_local['NonBatis']==1){ echo 'Terrain'; };
+  if($fichetechnique_local['NonBatis']==2){ echo 'Cours';};
+  if($fichetechnique_local['NonBatis']==3){ echo 'Terras' ;};
+  ?></li>
+  <li class="list-group-item">Batis : <?php if($fichetechnique_local['Batis']==1){ echo 'Garage'; };
+  if($fichetechnique_local['Batis']==2){ echo 'Buand';};
+  if($fichetechnique_local['Batis']==3){ echo 'Cave' ;};
+  ?></li>
   <li class="list-group-item">NatureLocal : <?php echo $fichetechnique_local['NatureLocal'] ?></li>
   <li class="list-group-item">ValeurLocation :<?php echo $fichetechnique_local['ValeurLocation']  ?></li>
   <li class="list-group-item">Nombre des Familles Occupants :<?php echo $fichetechnique_local['NomFamilleOccupant'] ?></li>

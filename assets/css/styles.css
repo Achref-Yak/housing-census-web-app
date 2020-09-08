@@ -430,3 +430,17 @@ input[type=password]:placeholder {
   justify-content: center;
  
 }
+
+.info {
+  height: 100%;  
+  background-image:url("../../assets/rectangle_bleu.png");
+ 
+ 
+ 
+ }
+
+.navicon{
+  position: relative;
+  left: -5px;
+  margin: 2px;
+}

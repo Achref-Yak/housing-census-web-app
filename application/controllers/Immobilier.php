@@ -20,7 +20,7 @@
 			$data['gestion'] = $this->Immobiliere_model->get_gestion_all();
 
 			$this->form_validation->set_rules('TF', 'TF', 'required');
-			$this->form_validation->set_rules('Zone', 'Zone', 'required');
+			$this->form_validation->set_rules('AdresseFR', 'AdresseFR', 'required');
 
 			if($this->form_validation->run() === FALSE){
 				$this->load->view('templates/header');

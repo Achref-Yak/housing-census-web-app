@@ -4,8 +4,9 @@
 
 
 <div class="con">
-<div class="alert alert-info" role="alert">
-Immobiliers  Non Affectée
+<div class="alert alert-light" role="alert">
+<b>Immobiliers Non Affectées</b>
+ 
 </div>
  
 <div class="row" >
@@ -14,33 +15,36 @@ Immobiliers  Non Affectée
 <div class="row" style='margin-bottom:20px'>
 
 <div class="col-4">	
-    Titre Foncier
+    <b>Titre Foncier</b>
 
 </div>
 <div class="col-4">	
-     Adresse
+     <b>Adresse</b>
 
 </div>
 <div class="col-4">	
-    Créé
+    <b>Créé</b>
 
 </div>
  
 </div>
 <?php foreach($missionsNf as $immeuble) : ?>
 
-<a href="<?php echo site_url('/immobilier/'.$immeuble['Immeuble_id'].'/'.$immeuble['Code_TF']); ?>" class="list-group-item list-group-item-action list-group-item-primary">
+<a href="<?php echo site_url('/immobilier/'.$immeuble['Immeuble_id'].'/'.$immeuble['Code_TF']); ?>" class="list-group-item list-group-item-action list-group-item-light">
 <div class="row">
 
 <div class="col-4">	
+<img src='<?php echo base_url(); ?>assets/imm.png'>
      <?php echo $immeuble['Code_TF'];?> 
 
 </div>
 <div class="col-4">	
+<img src='<?php echo base_url(); ?>assets/gps.png'>
      <?php echo $immeuble['Adresse'];?> 
 
 </div>
 <div class="col-4">	
+<img src='<?php echo base_url(); ?>assets/heu.png'>
 <?php echo $immeuble['Created_date'];?> 
 
 </div>
@@ -56,27 +60,29 @@ Immobiliers  Non Affectée
 </div>
 
 
+
 <div class="con">
-<div class="alert alert-info" role="alert">
-Immobiliers  Affectées
+<div class="alert alert-light" role="alert">
+<b>Immobiliers  Affectées</b>
 </div>
+ 
 
 <div class="row" style='margin-bottom:20px'>
 
 <div class="col-4">	
-    Titre Foncier
+    <b>Titre Foncier</b>
 
 </div>
 <div class="col-4">	
-     Adresse
+     <b>Adresse</b>
 
 </div>
 <div class="col-2">	
-    Technicien
+    <b>Technicien</b>
 
 </div>
 <div class="col-2">	
-    Créé
+    <b>Créé</b>
 
 </div>
  
@@ -84,23 +90,28 @@ Immobiliers  Affectées
 
 <?php foreach($missionsAf as $mission) : ?>
 
-<a href="<?php echo site_url('/immobilier/'.$mission['Immeuble_id'].'/'.$mission['Code_TF']); ?>" class="list-group-item list-group-item-action list-group-item-primary">
+<a href="<?php echo site_url('/immobilier/'.$mission['Immeuble_id'].'/'.$mission['Code_TF']); ?>" class="list-group-item list-group-item-action list-group-item-light">
 <div class="row">
 
 <div class="col-4">	
+     <img src='<?php echo base_url(); ?>assets/imm.png'>
      <?php echo $mission['Code_TF'];?> 
 
 </div>
 <div class="col-4">	
+ 
+<img src='<?php echo base_url(); ?>assets/gps.png'>
      <?php echo $mission['Adresse'];?> 
 
 </div>
 <div class="col-2">	
+<img src='<?php echo base_url(); ?>assets/imm.png'>
      <?php echo $mission['Nom'];?> 
 
 </div>
 
 <div class="col-2">	
+<img src='<?php echo base_url(); ?>assets/heu.png'>
      <?php echo $mission['Created_date'];?> 
 
 </div>

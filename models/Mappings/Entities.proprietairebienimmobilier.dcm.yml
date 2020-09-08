@@ -24,9 +24,10 @@ Entities\Proprietairebienimmobilier:
       length: 255 
       nullable : true
     rip :
-      type : string 
-      length: 255
-      nullable : true      
+      type : decimal 
+      precision: 12
+      scale: 3
+      nullable : true   
 
   oneToOne:
     Immeuble:

@@ -20,6 +20,7 @@
 
 
     <div class="col-8 marginspace" style="margin-top:10px">
+    
     <?php if($this->session->flashdata('prop_reglement')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('prop_reglement').'</p>'; ?>
       <?php endif; ?>
@@ -159,7 +160,7 @@
   
       </div>      
       <div class="con">
-    
+ 
     <?php echo form_open('immobilier/updategestion/'.$gestion['immeuble'].'/'.$gestion['TF']); ?>
     <div class="form-group">
         
@@ -199,7 +200,14 @@
             <div class="col-3">
             <div class="form-group">
               <label>NatureConst</label>
-              <input type="text" class="form-control" name="NatureConst" placeholder="NatureConst" value="<?php echo $gestion['NatureConst'];?>">
+              <select class="form-control"  name="NatureConst">
+                <?php if ($gestion['NatureConst']== '1') {echo "<option value='1' selected> 1</option>"; echo "<option value='2'>2</option>";  echo "<option value='3'>3</option>";}
+                else if ($gestion['NatureConst']== '2') {echo "<option value='2' selected> 2</option>";  echo "<option value='1'>1</option>"; echo "<option value='3'>3</option>";}
+                else if ($gestion['NatureConst']== '3') {echo "<option value='3' selected> 3</option>"; echo "<option value='2'>2</option>"; echo "<option value='1'>1</option>";}
+                else {echo "<option value='1' selected> 1</option>"; echo "<option value='2'>2</option>"; echo "<option value='3'>3</option>";}
+               
+               ?></select>
+ 
               </div>
             </div>
     </div>
@@ -268,7 +276,14 @@
             <div class="col-3">
                 <div class="form-group">
                 <label>PlanConst</label>
-    <input type="text" class="form-control" name="PlanConst" placeholder="PlanConst" value="<?php echo $gestion['PlanConst'];?>">
+                <select class="form-control" id="sel1" name="PlanConst">
+                <?php if ($gestion['PlanConst']== 'oui') {echo "<option value='oui' selected>Oui</option>"; echo "<option value='non'>Non</option>";}
+                else if ($gestion['PlanConst']== 'non') {echo "<option value='non' selected>Non</option>"; echo "<option value='oui'>Oui</option>";}
+                else  {echo "<option value='non' selected>Non</option>"; echo "<option value='oui'>Oui</option>";}
+                
+                ?> 
+                      </select>
+ 
                 </div>
             </div>
             <div class="col-3">
@@ -739,6 +754,7 @@ else echo '
 <div class="row">
 <div class="col-12">
 <ul class="list-group">
+<li class="list-group-item">Adresse : <?php echo $fichetechnique['Adresse'] ?></li>  
   <li class="list-group-item">Construction :<?php  if($fichetechnique['Categorie']==1) echo " Immeuble"; if($fichetechnique['Categorie']==2) echo " Villa"; if($fichetechnique['Categorie']==3) echo " Garage"  ?></li>
   <li class="list-group-item">Nombre Des Locaux : <?php echo $fichetechnique['NumLocal'] ?></li>
   <li class="list-group-item">Nombre D'etages : <?php echo $fichetechnique['NumEtage'] ?></li>

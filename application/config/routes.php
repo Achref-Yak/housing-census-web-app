@@ -54,7 +54,9 @@ $route['404_override'] = '';
 $route['fichetechnique/create'] = 'fichetechnique/create';
 $route['fichetechnique/(:any)'] = 'fichetechnique/view/$1';
 $route['fichetechnique'] = 'fichetechnique/index'; 
+
  
+
 $route['local'] = 'local/index';
 $route['missions'] = 'missions/index';
 $route['missions/(:any)'] = 'missions/view/$1';
